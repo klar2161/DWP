@@ -1,8 +1,8 @@
 <?php
 
 $serverName = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
+$dBUsername = "admin";
+$dBPassword = "123456";
 $dBName = "DeepbookDB";
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
