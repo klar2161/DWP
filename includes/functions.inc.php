@@ -48,16 +48,16 @@ function pwdMatch($pwd, $pwdRepeat) {
     
 }
 
-function uidExists($conn, $username, $email) {
+function uidExists($conn, $username) {
     
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+    $sql = "SELECT * FROM users WHERE usersUid = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
 
     $resultData = mysqli_stmt_get_result($stmt);
@@ -83,8 +83,10 @@ function createUser($conn, $email, $username, $pwd) {
     }
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $hashedPwd_salt = password_hash($pwd, PASSWORD_DEFAULT,array('cost' =>9));
 
-    mysqli_stmt_bind_param($stmt, "sss", $email, $username, $hashedPwd);
+
+    mysqli_stmt_bind_param($stmt, "sss", $email, $username, $hashedPwd_salt);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
@@ -109,28 +111,46 @@ function emptyInputLogin($username, $pwd) {
 
 function loginUser($conn, $username, $pwd) {
 
-    $uidExists = uidExists($conn, $username, $username, $email);
-    
+    $uidExists = uidExists($conn, $username);
+    //var_dump($uidExists);
 
     if ($uidExists == false) {
         header("location: ../login.php?error=wronglogin");
         exit();
     }
 
-    $pwdHashed = $uidExists["usersPwd"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
+    $pwdHashed_salt = $uidExists["usersPwd"];
+    $checkPwd = password_verify($pwd, $pwdHashed_salt);
 
     if ($checkPwd === false) {
         header("location: ../login.php?error=wronglogin");
         exit();
     }
-    else if ($checkPwd === true){
+    else if ($checkPwd === true){   
         session_start();
         $_SESSION["userid"] = $uidExists["userID"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
-        $_SESSION["useremail"] = $uidExists["usersEmail"];
+        $_SESSION["user_level"] = $uidExists["user_level"];
+        $_SESSION["isLoggedIn"] = true;
+        
+        
+        //$_SESSION["useremail"] = $uidExists["usersEmail"];
  
         header("location: ../index.php");
         exit();
     }
 }
+
+define('USER_LEVEL_ADMIN' , '1');
+
+
+
+function isAdmin() {
+    if ( isset( $_SESSION['useruid'] ) && $_SESSION['user_level'] == 1 ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+

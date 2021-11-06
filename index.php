@@ -2,6 +2,8 @@
 
 include_once 'header.php';
 
+
+
 ?>
 
 <section class="index-intro">
