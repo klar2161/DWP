@@ -41,11 +41,11 @@ mysqli_stmt_close($stmt);
   ?>" alt="" style="width:10%">
 
   <h1><?php 
-  echo $row["usersUid"];
+  echo htmlspecialchars($row["usersUid"]);
   ?></h1>
 
 <h2><?php 
-  echo $row["usersEmail"];
+  echo htmlspecialchars($row["usersEmail"]);
   ?></h2>
   
   <a href="profile-edit.php">

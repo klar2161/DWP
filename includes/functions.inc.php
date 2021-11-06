@@ -66,8 +66,30 @@ function uidExists($conn, $username) {
         return $row;
     }
     else{
-        $result = false;
-        return $result;
+        return false;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+function emailExists($conn, $email) {
+    
+    $sql = "SELECT * FROM users WHERE usersEmail = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    }
+    else{
+        return false;
     }
 
     mysqli_stmt_close($stmt);
@@ -107,6 +129,23 @@ function emptyInputLogin($username, $pwd) {
     }
     return $result;
     
+}
+// i used switch just because i dont want use 100 elseifs:))
+function errorHandlers($error){
+    switch ($error){
+        case "invalidemail":
+            echo "<p>Choose a proper email!</p>";
+            break;
+        case "emptyinput":
+                echo "<p>Fill in all fields!</p>";
+                break;
+        case "usernametaken":
+                echo "<p>Choose another username!!</p>";
+                break;
+        case "stmtfailed":
+                echo "<p>Something went wrong! Try again :(!</p>";
+                break;
+    }
 }
 
 function loginUser($conn, $username, $pwd) {

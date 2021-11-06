@@ -3,6 +3,7 @@
 include_once 'header.php';
 include_once 'footer.php';
 include_once 'includes/dbh.inc.php';
+include_once 'includes/functions.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +28,12 @@ $resultData = mysqli_stmt_get_result($stmt);
 $row = mysqli_fetch_assoc($resultData);
 
 mysqli_stmt_close($stmt);
+
+
+if (isset($_GET["error"])) {
+    errorHandlers($_GET["error"]);
+}
+
 ?>
 <form action="includes/profile-update.inc.php" method="post">
         <input type="text" name="email" value="<?php echo $row["usersEmail"];?>">
