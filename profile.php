@@ -29,16 +29,28 @@ $row = mysqli_fetch_assoc($resultData);
 
 mysqli_stmt_close($stmt);
 ?>
+<div class="container-profile">
+<img src="<?php
+  echo $row["cover_img"] ?? "uploads/placeholder.png";
+  ?>" alt="" style="width:100%">
 
-  <form action="upload.php" method="POST" enctype="multipart/form-data">
+<form action="upload-cover.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <button type="submit" name="submit">UPLOAD COVER</button>
+</form>
+
+
+<div class="card">
+  
+  <img src="<?php
+  echo $row["profile_img"] ?? "uploads/default.jpeg";
+  ?>" alt="" style="width:10%">
+
+ <form action="upload.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <button type="submit" name="submit">UPLOAD</button>
   </form>
 
-<div class="card">
-  <img src="<?php
-  echo $row["profile_img"] ?? "uploads/default.jpeg";
-  ?>" alt="" style="width:10%">
 
   <h1><?php 
   echo htmlspecialchars($row["usersUid"]);
@@ -51,6 +63,8 @@ mysqli_stmt_close($stmt);
   <a href="profile-edit.php">
   <button type="submit" name="submit">EDIT</button>
   </a>
+
+</div>
 
 </div>
 </body>
