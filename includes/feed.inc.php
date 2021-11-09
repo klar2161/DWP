@@ -1,27 +1,20 @@
 <?php
 
-if (isset($_POST["submit"])) {
+$serverName = "localhost";
+$dBUsername = "root";
+$dBPassword = "";
+$dBName = "DeepbookDB";
+
+$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+
+include('session.php');
+
+if (isset($_POST['post'])){
+
+    header('feed.php');
 
     $post = $_POST["post"];
-
-    require_once 'dbh.inc.php';
-    require_once 'feedfunctions.php';
     
-    createPost();
 
-}
-else {
-    header("location: ../signup.php");
-    exit();
+mysqli_query($conn,"insert into posts (post,userID) values ('$post','$userid') ")or die(mysqli_error());
 };
-
-if (isset($_POST["delete"])) {
-
-    $postID = $_POST["postID"];
-
-    require_once 'dbh.inc.php';
-    require_once 'feedfunctions.php';
-    
-    deletePost();
-
-}

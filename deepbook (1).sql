@@ -12,7 +12,10 @@ CREATE TABLE users (
     userID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
     usersUid varchar(100) NULL,
     usersEmail varchar(50) NULL,
-    usersPwd varchar (64) NULL
+    usersPwd varchar (64) NULL,
+    profile_img varchar (255) NULL,
+    cover_img varchar (255) NULL,
+    user_level int(11) DEFAULT 0
 )ENGINE=InnoDB;
 
 CREATE TABLE Comments (
@@ -24,9 +27,9 @@ CREATE TABLE Comments (
 
 CREATE TABLE Posts (
     postID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    reaction int NOT NULL,
     post text,
-    photo varchar(255) NULL
+    userID int NOT NULL,
+    FOREIGN KEY (userID) REFERENCES Users (userID)
 )ENGINE=InnoDB;
 
 CREATE TABLE userCanCreate (

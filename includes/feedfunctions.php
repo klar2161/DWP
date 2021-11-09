@@ -18,29 +18,26 @@ function createPost(){
     VALUES (NULL,'$post')";
     
     if ($conn->query($sql) === TRUE) {
-      header("location: ../index.php");
+      header("location: ../feed.php");
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
     
     $conn->close();
     }
-    
-    function deletePost(){
 
-        $postid=$_GET['postid'];
-
-        if (!$conn){
-            die("Connection failed: " . mysqli_connect_error());
-        }
-        
-        "DELETE FROM `posts` WHERE postID=".$_GET['postID'];
     
-        if ($conn->query($sql) === TRUE) {
-            header("location: ../index.php");
-          } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+    
+    /*function deletePost(){
+
+      require_once("includes/dbh.inc.php");
+        $result = mysqli_query($conn, $query) or die("unlucky");
+        while($row = mysqli_fetch_array($result)){
+            echo 
+            "<a href='del_user.php?id=".$row['userID']."'>delete</a><br>"; 
           }
-    }   
+    }
+    
+    }   */
 
     

@@ -1,8 +1,7 @@
 <?php
-
 $serverName = "localhost";
-$dBUsername = "admin";
-$dBPassword = "123456";
+$dBUsername = "root";
+$dBPassword = "";
 $dBName = "DeepbookDB";
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
@@ -10,4 +9,25 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if (!$conn){
     die("Connection failed: " . mysqli_connect_error());
+}
+
+function conn()
+{
+    $serverName = "localhost";
+    $dBUsername = "root";
+    $dBPassword = "";
+    $dBName = "DeepbookDB";
+
+    $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+
+    if (!$conn)
+    {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    else
+    {
+        return $conn;
+    }
+    
+
 }
