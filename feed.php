@@ -21,10 +21,13 @@ require_once("includes/dbh.inc.php");
 
 $conn= conn();
 
-$query = "SELECT*FROM `Posts`";
+$query = "SELECT posts.postID, users.usersuid, posts.post
+FROM posts
+INNER JOIN users ON posts.userID=users.userID;";
 $result = mysqli_query($conn, $query) or die("its ded");
 while($row = mysqli_fetch_array($result)){
     echo  
+    $row["usersuid"].
     $row["post"].
     "<a href='deletepost.php?id=".$row['postID']."'>  X</a><br>";
      
@@ -41,4 +44,6 @@ while($row = mysqli_fetch_array($result)){
 include_once 'footer.php';
 
 ?>
+
+
 
