@@ -15,13 +15,9 @@ else {
     exit();
 };
 
-if (isset($_POST["delete"])) {
-
-    $postID = $_POST["postID"];
-
-    require_once 'dbh.inc.php';
-    require_once 'feedfunctions.php';
+if(isset($_GET['id'])){
+    $query = "DELETE FROM `posts` WHERE `postID`=". $_GET['id'];
+    mysqli_query($conn, $query);
     
-    deletePost();
 
 }
