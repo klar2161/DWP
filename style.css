@@ -13,6 +13,8 @@ nav {
   justify-content: space-between;
   padding: 0.5rem;
   background-color: rgb(0, 0, 0);
+  padding-bottom: 30px;
+ 
 }
 
 ul {
@@ -28,15 +30,18 @@ nav a {
   margin-right: 1rem;
   text-decoration: none;
   color: rgb(255, 255, 255);
+
 }
 .logo {
-  height: 70px;
-  width: 70px;
+  
+  height: 35px;
+  width: 90px;
 }
 
 .wrapper-info {
   text-align: center;
   padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 button {
@@ -81,6 +86,11 @@ hr {
   margin-bottom: 25px;
 }
 
-.container-profile{
-text-align: center;
+.container-profile {
+  text-align: center;
+}
+
+
+.form-upload {
+  display: inline;
 }

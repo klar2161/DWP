@@ -32,9 +32,9 @@ mysqli_stmt_close($stmt);
 <div class="container-profile">
 <img src="<?php
   echo $row["cover_img"] ?? "uploads/placeholder.png";
-  ?>" alt="" style="width:100%">
+  ?>" alt="" style="width:100%;height:500px">
 
-<form action="upload-cover.php" method="POST" enctype="multipart/form-data">
+<form class="form-cover" action="upload-cover.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <button type="submit" name="submit">UPLOAD COVER</button>
 </form>
@@ -44,9 +44,10 @@ mysqli_stmt_close($stmt);
   
   <img src="<?php
   echo $row["profile_img"] ?? "uploads/default.jpeg";
-  ?>" alt="" style="width:10%">
+  ?>" alt="" style="width:30%">
+  <br></br>
 
- <form action="upload.php" method="POST" enctype="multipart/form-data">
+ <form class="form-upload" action="upload.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <button type="submit" name="submit">UPLOAD</button>
   </form>
