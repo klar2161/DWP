@@ -12,7 +12,7 @@ include('session.php');
 
 if (isset($_POST['post'])){
 
-    header('feed.php');
+    header("location: ../feed.php");
 
     $post = $_POST["post"];
 

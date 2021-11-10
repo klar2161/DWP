@@ -23,7 +23,7 @@ ul {
   float: right;
 }
 ul a:hover {
-  color: red;
+  color: green;
 }
 nav a {
   margin-left: 1rem;
@@ -45,7 +45,7 @@ nav a {
 }
 
 button {
-  background-color: red;
+  background-color: green;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
