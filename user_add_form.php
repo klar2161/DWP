@@ -14,9 +14,11 @@ include_once 'header.php';
         <input type="text" name="username" placeholder="Username..">
         <input type="password" name="password" placeholder="Password..">
         <button type="submit" name="submit">Submit</button>
+        
     </form>
+    
     <?php
-
+    
 if (isset($_GET["error"])) {
     if ($_GET["error"] == "emptyinput") {
         echo "<p>Fill in all fields!</p>";
@@ -40,6 +42,8 @@ if (isset($_GET["error"])) {
         echo "<p>You have succesfully signed up! :)</p>";
     }
 }
+
+
 
 ?>
 </section>

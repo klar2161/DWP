@@ -8,5 +8,9 @@ while($row = mysqli_fetch_array($result)){
     $row["usersUid"]. " - ". 
     $row["usersEmail"]. " - ". 
     $row["user_level"].
-    "<a href='del_user.php?id=".$row['userID']."'>delete</a><br>"; 
+    "<a href='del_user.php?id=".$row['userID']."'>delete</a>"." - ". 
+    "<a href='ban_user.php?id=".$row['userID']."'>ban</a>"." - ".
+    "<a href='unban_user.php?id=".$row['userID']."'>unban</a><br>";
 }
+?>
+

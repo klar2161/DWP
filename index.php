@@ -1,6 +1,7 @@
 <?php
 
 include_once 'header.php';
+include_once 'banned.php';
 
 ?>
 
@@ -12,7 +13,6 @@ if (isset($_SESSION["useruid"])) {
 } 
 
 ?>
-
 
 <?php
 
