@@ -1,12 +1,6 @@
 <?php
 
-$serverName = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
-$dBName = "DeepbookDB";
-
-$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
-
+include_once("dbh.inc.php");
 include('session.php');
 
 
@@ -16,13 +10,9 @@ if (isset($_POST['post'])){
 
     $post = $_POST["post"];
 
-
-    
-
 mysqli_query($conn,"insert into posts (post,userID) values ('$post','$userid') ")or die(mysqli_error());
+
+        $sanitized_post = htmlspecialchars($post);
+		 $handle->bindParam(':post', $sanitized_post);
 }
 
-if(isset($_GET['id'])){
-    $query = "DELETE FROM `posts` WHERE `postID`=". $_GET['id'];
-    mysqli_query($conn, $query);
-}
