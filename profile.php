@@ -1,8 +1,8 @@
 <?php
 
 include_once 'header.php';
-include_once 'footer.php';
 include_once 'includes/dbh.inc.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -70,3 +70,5 @@ mysqli_stmt_close($stmt);
 </div>
 </body>
 </html>
+<?php
+include_once 'footer.php';
