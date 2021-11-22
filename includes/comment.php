@@ -8,30 +8,37 @@ include('session.php');
 
 mysqli_query($conn,"insert into comments (content,userID) values ('$content','$userid') ")or die(mysqli_error());*/
 
+
 if (isset($_POST['content'])) {
 
     $content = $_POST["content"];
+    $userid = $_POST["uid"];
+    
 
-    createComment($conn, $commentID, $content, $userid);
+    createComment($conn, $content, $userid);
 
 }
 else {
-    header("location: ../feed.php");
+   // header("location: ../feed.php");
     exit();
 }
 
 
-function createComment($conn, $commentID, $content, $userid) {
 
-    header("location: ../feed.php");
+function createComment($conn, $content, $userid) {
     
-    $sql = "INSERT INTO comments (commentID, content, userID) VALUES (NULL, ?, ?);";
+    $sql = "INSERT INTO `Comments` (`commentID`, `content`, `userID`) VALUES (NULL, ?, ?);";
+    echo $sql;
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../feed.php");
+        //header("location: ../feed.php");
+        
         exit();
     }
-    mysqli_stmt_bind_param($stmt, "isi", $commentID, $content, $userid);
+    var_dump($stmt);
+    echo $content; 
+    echo $userid;
+    mysqli_stmt_bind_param($stmt, "si", $content, $userid);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
