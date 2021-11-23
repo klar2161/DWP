@@ -21,22 +21,28 @@ include_once 'header.php';
 
 include_once("includes/dbh.inc.php");
 
-$query = "SELECT posts.postID, users.usersuid, posts.post
-FROM posts
-INNER JOIN users ON posts.userID=users.userID;";
+$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID
+FROM Posts
+INNER JOIN users ON Posts.userID=users.userID;";
 $result = mysqli_query($conn, $query) or die("its ded");
-while($row = mysqli_fetch_array($result)){
+while($row = mysqli_fetch_assoc($result)){
     echo  
     "<h1>".$row["usersuid"]."</h1>"."<a href='deletepost.php?id=".$row['postID']."'>  X</a><br>".
-    "<h2>".$row["post"]."</h2>"; 
+    "<h2>".$row["post"]."</h2>".
+    "<h2>".$row["userID"]."</h2>"; 
+
+    ?><form action="includes/comment.php" method="post" class="postbox">
+    <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
+    <input type="hidden" name="uid" value="<?php echo $row["userID"]; ?>">
+    <br>
+    <button type="submit" name="submit">Comment</button>
+</form><?php
 }
+
+
 ?>
 
-<form action="includes/comment.php" method="post" class="postbox">
-        <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment" required></textarea>
-        <br>
-        <button type="submit" name="submit">Comment</button>
-</form>
+
 
 <?php
 							
@@ -50,6 +56,8 @@ while($row = mysqli_fetch_array($result)){
 include_once 'footer.php';
 
 ?>
+
+
 
 
 
