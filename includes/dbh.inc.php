@@ -1,4 +1,5 @@
 <?php
+
 $serverName = "localhost";
 $dBUsername = "root";
 $dBPassword = "";
@@ -11,6 +12,9 @@ if (!$conn){
     die("Connection failed: " . mysqli_connect_error());
 }
 
+
+
+//connectToDB
 function conn()
 {
     $serverName = "localhost";

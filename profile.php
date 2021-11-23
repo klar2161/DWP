@@ -1,7 +1,7 @@
 <?php
 
 include_once 'header.php';
-include_once 'includes/dbh.inc.php';
+include_once 'includes/userDAO.php';
 
 ?>
 
@@ -14,21 +14,12 @@ include_once 'includes/dbh.inc.php';
 	<title> Profile page</title>
 </head>
 <body>
+
 <?php
-include_once 'includes/dbh.inc.php';
-$userId = $_SESSION["userid"] ;
-
-$sql = "SELECT * FROM users WHERE userID = ?";
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
-mysqli_stmt_bind_param($stmt, "i", $userId);
-mysqli_stmt_execute($stmt);
-
-$resultData = mysqli_stmt_get_result($stmt);
-$row = mysqli_fetch_assoc($resultData);
-
-mysqli_stmt_close($stmt);
+$userDAO = new UserDAO(); //create object from class
+$row = $userDAO->getSpecificUser($_SESSION["userid"]);
 ?>
+
 <div class="container-profile">
 <img src="<?php
   echo $row["cover_img"] ?? "uploads/placeholder.png";
@@ -44,7 +35,7 @@ mysqli_stmt_close($stmt);
   
   <img src="<?php
   echo $row["profile_img"] ?? "uploads/default.jpeg";
-  ?>" alt="" style="width:30%">
+  ?>" alt="" >
   <br></br>
 
  <form class="form-upload" action="upload.php" method="POST" enctype="multipart/form-data">

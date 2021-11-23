@@ -21,12 +21,14 @@ if (isset($_POST['submit'])) {
 
 function resize_image($file,$max_resolution){
 
+    var_dump($file,$max_resolution);
+
     if(file_exists($file)){
-        $origial_image = imagecreatefromjpeg($file);
+        $original_image = imagecreatefromjpeg($file);
 
         //resolutions 
-        $original_width = imagesx($origial_image);
-        $original_height = imagesy($origial_image);
+        $original_width = imagesx($original_image);
+        $original_height = imagesy($original_image);
 
         //width 
         $ratio =$max_resolution / $original_width;
@@ -42,7 +44,7 @@ function resize_image($file,$max_resolution){
 
         if ($original_image) {
             $new_image = imagecreatetruecolor($new_width, $new_height);
-            imagecopyresampled($new_image,$origial_image,0,0,0,0,$new_width,$new_height,$original_width,$original_height);
+            imagecopyresampled($new_image,$original_image,0,0,0,0,$new_width,$new_height,$original_width,$original_height);
 
             imagejpeg($new_image,$file,90);
         }
@@ -54,8 +56,14 @@ function resize_image($file,$max_resolution){
             if ($fileSize < 1000000) {
                // $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDestination = 'uploads/'.$_FILES['file']['tmp_name'];
-                move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
-                resize_image($file,"200");
+                
+                // move file to directory
+                move_uploaded_file($fileName , $final_file_path);
+            
+                resize_image($final_file_path,"200");
+                
+                //move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
+                
                 // save to db
                 $sql = "UPDATE users SET profile_img = ? WHERE userID = ?";
                 $stmt = mysqli_stmt_init($conn);
@@ -64,6 +72,7 @@ function resize_image($file,$max_resolution){
                 mysqli_stmt_execute($stmt);
                 
                 mysqli_stmt_close($stmt);
+
                 header("Location: profile.php?uploadsucess");
             } else{
                 echo "Your file is too big!";
