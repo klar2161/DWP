@@ -27,9 +27,10 @@ INNER JOIN users ON Posts.userID=users.userID;";
 $result = mysqli_query($conn, $query) or die("its ded");
 while($row = mysqli_fetch_assoc($result)){
     echo  
-    "<h1>".$row["usersuid"]."</h1>"."<a href='deletepost.php?id=".$row['postID']."'>  X</a><br>".
-    "<h2>".$row["post"]."</h2>".
-    "<h2>".$row["userID"]."</h2>"; 
+    "<h1>".$row["usersuid"]."</h1>".
+    "<a href='deletepost.php?id=".$row['postID']."'>  X</a><br>".
+    "<h2>".$row["post"]."</h2>";
+     
 
     ?><form action="includes/comment.php" method="post" class="postbox">
     <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
