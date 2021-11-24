@@ -1,6 +1,6 @@
 <?php
 include_once '../Presentation/header.php';
-//include_once 'Presentation/profile.php';
+//include_once '../Presentation/profile.php';
 include_once '../DataAcces/connectDB.php';
 
 if (isset($_POST['submit'])) {

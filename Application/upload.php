@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $fileSize = $_FILES['file']['size'];
     $fileError= $_FILES['file']['error'];
     $fileType = $_FILES['file']['type'];
-    $final_file_path = "uploads/" .$_FILES['file']['name'];
+    $final_file_path = "../uploads/" .$_FILES['file']['name'];
     $userid = $_SESSION["userid"];
     
     $fileExt = explode('.', $fileName);
@@ -55,14 +55,14 @@ function resize_image($file,$max_resolution){
         if ($fileError === 0) {
             if ($fileSize < 1000000) {
                // $fileNameNew = uniqid('', true).".".$fileActualExt;
-                $fileDestination = 'uploads/'.$_FILES['file']['tmp_name'];
+                $fileDestination = '../uploads/'.$_FILES['file']['tmp_name'];
                 
                 // move file to directory
                 move_uploaded_file($fileName , $final_file_path);
             
                 resize_image($final_file_path,"200");
                 
-                //move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
+                move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
                 
                 // save to db
                 $sql = "UPDATE users SET profile_img = ? WHERE userID = ?";
@@ -73,7 +73,7 @@ function resize_image($file,$max_resolution){
                 
                 mysqli_stmt_close($stmt);
 
-                header("Location: Presentation/profile.php");
+                header("Location:../Presentation/profile.php");
             } else{
                 echo "Your file is too big!";
             }
