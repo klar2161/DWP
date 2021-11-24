@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php';
+include_once 'Presentation/header.php';
 
 include_once 'includes/dbh.inc.php';
 
@@ -73,7 +73,7 @@ function resize_image($file,$max_resolution){
                 
                 mysqli_stmt_close($stmt);
 
-                header("Location: profile.php?uploadsucess");
+                header("Location: Presentation/profile.php");
             } else{
                 echo "Your file is too big!";
             }

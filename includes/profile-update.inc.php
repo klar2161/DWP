@@ -11,19 +11,19 @@ if (isset($_POST["submit"])) {
 
     // TODO check if empty, add updated to session
     if (empty($username)  or empty($email)) {
-        header("location: ../profile-edit.php?error=emptyinput");
+        header("location: ../Presentation/profile-edit.php?error=emptyinput");
         exit();
     }
     if (invalidEmail($email)) {
-        header("location: ../profile-edit.php?error=invalidemail");
+        header("location: ../Presentation/profile-edit.php?error=invalidemail");
         exit();
     }
     if (uidExists($conn, $username)){
-        header("location: ../profile-edit.php?error=usernametaken");
+        header("location: ../Presentation/profile-edit.php?error=usernametaken");
         exit();
     }
     if (emailExists($conn, $email)){
-        header("location: ../profile-edit.php?error=usernametaken");
+        header("location: ../Presentation/profile-edit.php?error=usernametaken");
         exit();
     }
    

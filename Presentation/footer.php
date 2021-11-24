@@ -5,7 +5,8 @@
         
 <?php 
 
-require( __DIR__ . '/includes/functions.inc.php');
+include_once '../includes/functions.inc.php';
+//require( __DIR__ . '/includes/functions.inc.php');
 //echo("Userid:" . $_SESSION["userid"]);
 
 if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) : ?>

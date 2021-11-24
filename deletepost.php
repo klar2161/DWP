@@ -1,5 +1,5 @@
 <?php
-require_once("feed.php");
+include_once 'Presentation/feed.php';
 header("Refresh:0; url=feed.php");
 if(isset($_GET['id'])){
     $query = "DELETE FROM `posts` WHERE `postID`=". $_GET['id'];

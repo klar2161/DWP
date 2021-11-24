@@ -2,6 +2,7 @@
 include_once 'includes/dbh.inc.php';
 include_once 'includes/functions.inc.php';
 
+
 $sql = "SELECT policies FROM Platform"; 
 $stmt = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($stmt, $sql);

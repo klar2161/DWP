@@ -1,5 +1,5 @@
 <?php
-require_once("usersA.php");
+include_once 'usersA.php';
 header("Refresh:0; url=adminpanel.php");
 if(isset($_GET['id'])){
     $query = "UPDATE `Users` SET user_level='2' WHERE `userID`=". $_GET['id'];

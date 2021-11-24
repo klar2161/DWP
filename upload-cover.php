@@ -1,6 +1,6 @@
 <?php
-include_once 'header.php';
-
+include_once 'Presentation/header.php';
+//include_once 'Presentation/profile.php';
 include_once 'includes/dbh.inc.php';
 
 if (isset($_POST['submit'])) {
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
                 mysqli_stmt_execute($stmt);
                 
                 mysqli_stmt_close($stmt);
-                header("Location: profile.php?uploadsucess");
+                header("Location: Presentation/profile.php");
             } else{
                 echo "Your file is too big!";
             }

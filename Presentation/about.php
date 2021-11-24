@@ -1,9 +1,9 @@
 <?php
 
 include_once 'header.php';
-include_once 'includes/dbh.inc.php';
-include_once 'includes/functions.inc.php';
-include_once 'banned.php';
+include_once '../includes/dbh.inc.php';
+include_once '../includes/functions.inc.php';
+include_once '../banned.php';
 
 
 $sql = "SELECT * FROM Platform"; 

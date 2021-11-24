@@ -53,7 +53,7 @@ function uidExists($conn, $username) {
     $sql = "SELECT * FROM users WHERE usersUid = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../Presentation/signup.php?error=stmtfailed");
         exit();
     }
 
@@ -76,7 +76,7 @@ function emailExists($conn, $email) {
     $sql = "SELECT * FROM users WHERE usersEmail = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../Presentation/signup.php?error=stmtfailed");
         exit();
     }
 
@@ -100,7 +100,7 @@ function createUser($conn, $email, $username, $pwd) {
     $sql = "INSERT INTO users (usersEmail, usersUid, usersPwd) VALUES (?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../Presentation/signup.php?error=stmtfailed");
         exit();
     }
 
@@ -111,7 +111,7 @@ function createUser($conn, $email, $username, $pwd) {
     mysqli_stmt_bind_param($stmt, "sss", $email, $username, $hashedPwd_salt);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../signup.php?error=none");
+    header("location: ../Presentation/signup.php?error=none");
         exit();
 }
 
@@ -154,7 +154,7 @@ function loginUser($conn, $username, $pwd) {
     //var_dump($uidExists);
 
     if ($uidExists == false) {
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../Presentation/login.php?error=wronglogin");
         exit();
     }
 
@@ -162,7 +162,7 @@ function loginUser($conn, $username, $pwd) {
     $checkPwd = password_verify($pwd, $pwdHashed_salt);
 
     if ($checkPwd === false) {
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../Presentation/login.php?error=wronglogin");
         exit();
     }
     else if ($checkPwd === true){   
@@ -175,7 +175,7 @@ function loginUser($conn, $username, $pwd) {
         
         //$_SESSION["useremail"] = $uidExists["usersEmail"];
  
-        header("location: ../index.php");
+        header("location: ../Presentation/index.php");
         exit();
     }
 }

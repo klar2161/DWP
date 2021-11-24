@@ -1,3 +1,4 @@
+
 <?php 
 define('USER_LEVEL_BANNED' , '2');
 
