@@ -34,6 +34,6 @@ $row = mysqli_fetch_assoc($resultData);
      </p>
     <br></br>
     <br></br>
-     <a href="policies.php">Rules and Regulations</a>
+     <a href="../DataAcces/policies.php">Rules and Regulations</a>
  </body>
  </html>

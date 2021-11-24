@@ -1,7 +1,7 @@
 <?php
-include_once '../upload.php';
-include_once '../upload-cover.php';
-include_once 'header.php';
+include_once '../Application/upload.php';
+include_once '../Application/upload-cover.php';
+include_once '../Presentation/header.php';
 include_once '../DataAcces/userDAO.php';
 
 ?>

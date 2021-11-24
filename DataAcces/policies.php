@@ -1,5 +1,5 @@
 <?php
-include_once 'connectDB.inc.php';
+include_once 'connectDB.php';
 include_once '../Application/functions.inc.php';
 
 

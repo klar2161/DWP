@@ -1,7 +1,7 @@
 <?php
 include_once '../Presentation/header.php';
 //include_once 'Presentation/profile.php';
-include_once 'DataAcces/connectDB.php';
+include_once '../DataAcces/connectDB.php';
 
 if (isset($_POST['submit'])) {
     $file = $_FILES['file'];
@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $fileSize = $_FILES['file']['size'];
     $fileError= $_FILES['file']['error'];
     $fileType = $_FILES['file']['type'];
-    $final_file_path = "uploads/" .$_FILES['file']['name'];
+    $final_file_path = "../uploads/" .$_FILES['file']['name'];
     $userid = $_SESSION["userid"];
     
     $fileExt = explode('.', $fileName);
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
         if ($fileError === 0) {
             if ($fileSize < 1000000) {
                // $fileNameNew = uniqid('', true).".".$fileActualExt;
-                $fileDestination = 'uploads/'.$_FILES['file']['tmp_name'];
+                $fileDestination = '../uploads/'.$_FILES['file']['tmp_name'];
                 move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
                 resize_image($file,"800");
                 // save to db
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
                 mysqli_stmt_execute($stmt);
                 
                 mysqli_stmt_close($stmt);
-                header("Location: Presentation/profile.php");
+                header("Location:../Presentation/profile.php");
             } else{
                 echo "Your file is too big!";
             }
