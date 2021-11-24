@@ -5,7 +5,7 @@
         
 <?php 
 
-include_once '../includes/functions.inc.php';
+include_once '../Application/functions.inc.php';
 //require( __DIR__ . '/includes/functions.inc.php');
 //echo("Userid:" . $_SESSION["userid"]);
 

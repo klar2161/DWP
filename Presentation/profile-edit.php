@@ -3,7 +3,7 @@
 include_once 'header.php';
 include_once 'footer.php';
 include_once '../DataAcces/connectDB.php';
-include_once 'includes/functions.inc.php';
+include_once '../Application/functions.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ if (isset($_GET["error"])) {
 }
 
 ?>
-<form action="includes/profile-update.inc.php" method="post">
+<form action="../Application/profile-update.inc.php" method="post">
         <input type="text" name="email" value="<?php echo $row["usersEmail"];?>">
         <input type="text" name="uid" value="<?php echo $row["usersUid"];?>">
         <button type="submit" name="submit">SAVE</button>

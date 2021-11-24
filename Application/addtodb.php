@@ -1,6 +1,6 @@
 <?php
 require_once ("../DataAcces/connectDB.php");
-require_once ("includes/functions.inc.php");
+require_once ("functions.inc.php");
 $username = $_POST['username'];
 $email = $_POST['email'];
 $hashedPwd_salt = $_POST['password'];

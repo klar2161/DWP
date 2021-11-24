@@ -26,7 +26,7 @@
                 if (isset($_SESSION["useruid"])) {
                     echo "<li><a href='feed.php'>Feed</a></li>";
                     echo "<li><a href='profile.php'>Profile Page</a></li>";
-                    echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+                    echo "<li><a href='../Application/logout.inc.php'>Log out</a></li>";
                 }
                 
                 else{

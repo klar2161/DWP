@@ -1,7 +1,7 @@
 <?php
 
 include_once 'header.php';
-include_once '../banned.php';
+include_once '../Application/banned.php';
 include_once 'feed.php'
 
 

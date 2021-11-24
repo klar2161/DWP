@@ -1,6 +1,6 @@
 <?php
 include_once 'connectDB.inc.php';
-include_once 'includes/functions.inc.php';
+include_once '../Application/functions.inc.php';
 
 
 $sql = "SELECT policies FROM Platform"; 

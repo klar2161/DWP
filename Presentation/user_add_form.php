@@ -9,7 +9,7 @@ include_once 'header.php';
     <br></br>
     <h2>Create user</h2>
     <br></br>
-    <form action="addtodb.php" method="post">
+    <form action="../Application/addtodb.php" method="post">
         <input type="text" name="email" placeholder="Email..">
         <input type="text" name="username" placeholder="Username..">
         <input type="password" name="password" placeholder="Password..">

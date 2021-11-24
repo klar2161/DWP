@@ -26,7 +26,7 @@ $row = $userDAO->getSpecificUser($_SESSION["userid"]);
   echo $row["cover_img"] ?? "uploads/placeholder.png";
   ?>" alt="" style="width:100%;height:500px">
 
-<form class="form-cover" action="../upload-cover.php" method="POST" enctype="multipart/form-data">
+<form class="form-cover" action="../Application/upload-cover.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <button type="submit" name="submit">UPLOAD COVER</button>
 </form>
@@ -39,7 +39,7 @@ $row = $userDAO->getSpecificUser($_SESSION["userid"]);
   ?>" alt="" >
   <br></br>
 
- <form class="form-upload" action="../upload.php" method="POST" enctype="multipart/form-data">
+ <form class="form-upload" action="../Application/upload.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <button type="submit" name="submit">UPLOAD</button>
   </form>

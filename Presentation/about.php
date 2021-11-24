@@ -2,8 +2,8 @@
 
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
-include_once '../includes/functions.inc.php';
-include_once '../banned.php';
+include_once '../Application/functions.inc.php';
+include_once '../Application/banned.php';
 
 
 $sql = "SELECT * FROM Platform"; 
