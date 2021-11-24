@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
     $pwd = $_POST["pwd"];
     $pwdRepeat = $_POST["pwdrepeat"];
 
-    require_once 'dbh.inc.php';
+    require_once '../DataAcces/connectDB.php';
     require_once 'functions.inc.php';
 
     if (emptyInputSignup($email, $username, $pwd, $pwdRepeat) !== false) {

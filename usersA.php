@@ -1,5 +1,5 @@
 <?php
-require_once("includes/dbh.inc.php");
+require_once("DataAcces/connectDB.php");
 $query = "SELECT*FROM `Users`";
 $result = mysqli_query($conn, $query) or die("unlucky");
 while($row = mysqli_fetch_array($result)){

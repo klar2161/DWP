@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/dbh.inc.php';
+include_once 'connectDB.inc.php';
 include_once 'includes/functions.inc.php';
 
 

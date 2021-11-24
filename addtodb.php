@@ -1,5 +1,5 @@
 <?php
-require_once ("includes/dbh.inc.php");
+require_once ("../DataAcces/connectDB.php");
 require_once ("includes/functions.inc.php");
 $username = $_POST['username'];
 $email = $_POST['email'];

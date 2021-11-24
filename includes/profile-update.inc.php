@@ -1,5 +1,5 @@
 <?php
-    include_once 'dbh.inc.php';
+    include_once '../DataAcces/connectDB.php';
     include_once 'functions.inc.php';
 session_start();
 
