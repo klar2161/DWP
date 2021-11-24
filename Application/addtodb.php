@@ -1,6 +1,7 @@
 <?php
 require_once ("../DataAcces/connectDB.php");
 require_once ("functions.inc.php");
+header("Refresh:0; url=../Presentation/adminpanel.php");
 $username = $_POST['username'];
 $email = $_POST['email'];
 $hashedPwd_salt = $_POST['password'];

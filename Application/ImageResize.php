@@ -1,7 +1,7 @@
 <?php
 
     // *** Include the class
-    include_once("DataAcces/connectDB.php");
+    include_once("../DataAcces/connectDB.php");
     include("resize-class.php");
 
     // *** 1) Initialise / load image
