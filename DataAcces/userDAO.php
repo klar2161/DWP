@@ -32,7 +32,7 @@ class UserDAO {
 
 
     // used by an admin
-    function deleteUser($userId) {    
+    function deleteUser($userId) { 
     }
 
 }
