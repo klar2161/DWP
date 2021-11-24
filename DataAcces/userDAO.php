@@ -33,6 +33,12 @@ class UserDAO {
 
     // used by an admin
     function deleteUser($userId) {    
+        if(isset($_GET['id'])){
+            $query = "DELETE FROM `Users` WHERE `userID`=". $_GET['id'];
+            mysqli_query($conn, $query);
+            
+        
+        }
     }
 
 }
