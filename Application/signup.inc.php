@@ -11,23 +11,23 @@ if (isset($_POST["submit"])) {
     require_once 'functions.inc.php';
 
     if (emptyInputSignup($email, $username, $pwd, $pwdRepeat) !== false) {
-        header("location: ../signup.php?error=emptyinput");
+        header("location: ../Presentation/signup.php?error=emptyinput");
         exit();
     }
     if (invalidUid($username) !== false) {
-        header("location: ../signup.php?error=invaliduid");
+        header("location: ../Presentation/signup.php?error=invaliduid");
         exit();
     }
     if (invalidEmail($email) !== false) {
-        header("location: ../signup.php?error=invalidemail");
+        header("location: ../Presentation/signup.php?error=invalidemail");
         exit();
     }
     if (pwdMatch($pwd, $pwdRepeat) !== false) {
-        header("location: ../signup.php?error=passwordsdontmatch");
+        header("location: ../Presentation/signup.php?error=passwordsdontmatch");
         exit();
     }
     if (uidExists($conn, $username, $email) !== false) {
-        header("location: ../signup.php?error=usernametaken");
+        header("location: ../Presentation/signup.php?error=usernametaken");
         exit();
     }
     
@@ -35,6 +35,6 @@ if (isset($_POST["submit"])) {
 
 }
 else {
-    header("location: ../signup.php");
+    header("location: ../Presentation/signup.php");
     exit();
 }
