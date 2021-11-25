@@ -1,6 +1,5 @@
 <?php
 include_once 'connectDB.php';
-include_once '../Application/usersA.php';
 
 class UserDAO {
 

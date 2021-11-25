@@ -5,7 +5,7 @@ $(document).ready(function () {
     // Sending Ajax request in handler page to perform the database operations
     $.ajax({
       type: "POST",
-      url: "like.php",
+      url: "../Application/like.php",
       data: "data_reaction=" + data_reaction,
       success: function (response) {
         // This code will run after the Ajax is successful
@@ -39,7 +39,7 @@ $(document).ready(function () {
       // Sending Ajax request in handler page to perform the database operations
       $.ajax({
         type: "POST",
-        url: "undo_like.php",
+        url: "../Application/undo_like.php",
         data: "",
         success: function (response) {
           // Handle when the Ajax is successful
