@@ -28,10 +28,11 @@ if (isset($_POST["submit"])) {
     }
    
     
+    
  $sql = "UPDATE users SET usersEmail = ?, usersUid = ? WHERE userID = ?";
  $stmt = mysqli_stmt_init($conn);
  if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("location: ../profile-edit.php?error=stmtfailed");
+    header("location: ../Presentation/profile-edit.php?error=stmtfailed");
     exit();
 }
  mysqli_stmt_bind_param($stmt, "ssi", $email,$username,$userid);
@@ -40,7 +41,7 @@ if (isset($_POST["submit"])) {
  mysqli_stmt_close($stmt);
 
 $_SESSION["useruid"] = $username;
- header("location: ../profile.php");
+ header("location: ../Presentation/profile.php");
  }
  
 

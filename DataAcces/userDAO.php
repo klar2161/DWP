@@ -4,9 +4,14 @@ include_once 'connectDB.php';
 class UserDAO {
 
     function getSpecificUser($userId) {
+        $serverName = "localhost";
+        $dBUsername = "root";
+        $dBPassword = "";
+        $dBName = "DeepbookDB";
 
-        $conn = conn();
+        $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
+        
         $sql = "SELECT * FROM users WHERE userID = ?";
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql);
@@ -22,7 +27,9 @@ class UserDAO {
     }
 
     // user wide
-    function updateUser($userId) {
+    function updateUser($userid) {
+
+        
     }
 
 

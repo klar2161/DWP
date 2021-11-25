@@ -175,7 +175,7 @@ function loginUser($conn, $username, $pwd) {
         
         //$_SESSION["useremail"] = $uidExists["usersEmail"];
  
-        header("location: ../Presentation/index.php");
+        header("location: ../Presentation/feed.php");
         exit();
     }
 }

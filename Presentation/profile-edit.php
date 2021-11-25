@@ -4,6 +4,8 @@ include_once 'header.php';
 include_once 'footer.php';
 include_once '../DataAcces/connectDB.php';
 include_once '../Application/functions.inc.php';
+include_once '../DataAcces/userDAO.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +18,10 @@ include_once '../Application/functions.inc.php';
 <body>
 <?php
 
-$userId = $_SESSION["userid"] ;
+$userDAO = new UserDAO(); //create object from class
+$row = $userDAO->getSpecificUser($_SESSION["userid"]);
 
-$sql = "SELECT * FROM users WHERE userID = ?";
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
-mysqli_stmt_bind_param($stmt, "i", $userId);
-mysqli_stmt_execute($stmt);
 
-$resultData = mysqli_stmt_get_result($stmt);
-$row = mysqli_fetch_assoc($resultData);
-
-mysqli_stmt_close($stmt);
 
 
 if (isset($_GET["error"])) {
