@@ -9,11 +9,11 @@ if (isset($_POST['content'])) {
     
     createComment($conn, $content, $userid);
 
-    header("location: ../feed.php");
+    header("location: ../Presentation/feed.php");
 
 }
 else {
-    header("location: ../feed.php");
+    header("location: ..../Presentation/feed.php");
     exit();
 }
 
@@ -24,7 +24,7 @@ function createComment($conn, $content, $userid) {
     $sql = "INSERT INTO `Comments` (`commentID`, `content`, `userID`) VALUES (NULL, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../feed.php");
+        header("location: ..../Presentation/feed.php");
         
         exit();
     }

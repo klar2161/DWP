@@ -2,20 +2,11 @@
 
 include_once("../DataAcces/connectDB.php");
 include('session.php');
-
-/*if (isset($_POST['post'])){
-
-    header("location: ../feed.php");
-
-    $post = $_POST["post"];
-
-mysqli_query($conn,"insert into posts (post,userID) values ('$post','$userid') ")or die(mysqli_error());
-}*/
     
 
-if (isset($_POST['post'])) {
+if (isset($_POST['postcontent'])) {
 
-    $post = $_POST["post"];
+    $post = $_POST['postcontent'];
 
     createPost($conn, $post, $userid);
 
@@ -34,7 +25,7 @@ function createPost($conn, $post, $userid) {
         header("location: ../Presentation/feed.php");
         exit();
     }
-    mysqli_stmt_bind_param($stmt, "si", $content, $userid);
+    mysqli_stmt_bind_param($stmt, "si", $post, $userid);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
