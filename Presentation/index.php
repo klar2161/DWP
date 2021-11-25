@@ -20,7 +20,7 @@ $row = mysqli_fetch_assoc($resultData);
 
 
 if (isset($_SESSION["useruid"])) {
-    echo "<p>Welcome here " . $_SESSION["useruid"] . "</p>";
+    echo "<h1 style='color:white'>Welcome here " . $_SESSION["useruid"] . "</h1>";
 } 
 
 
@@ -38,7 +38,7 @@ include_once 'footer.php';
  </head>
  <body style="background-color:black;">
  <div class="wrapper">
-        <a href="index.php"><img src="../img/logo2.png" alt="Logo" class="logo-big" style=" display: block;
+        <a href="index.php"><img src="../Presentation/img/logo2.png" alt="Logo" class="logo-big" style=" display: block;
     margin-left: auto;
     margin-right: auto; "></a>
 </div>
