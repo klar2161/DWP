@@ -1,5 +1,6 @@
 <?php
 include_once 'connectDB.php';
+include_once '../Application/usersA.php';
 
 class UserDAO {
 
@@ -39,7 +40,14 @@ class UserDAO {
 
 
     // used by an admin
-    function deleteUser($userId) { 
+    function deleteUser($userId) {
+        //header("Refresh:0; url=../Presentation/adminpanel.php");
+        if(isset($_GET['id'])){
+            $query = "DELETE FROM `Users` WHERE `userID`=". $_GET['id'];
+            mysqli_query($conn, $query);
+            
+        
+        }
     }
 
 }
