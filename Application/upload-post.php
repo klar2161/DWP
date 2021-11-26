@@ -1,10 +1,10 @@
-<?php
+<?php 
+
+//upload for posts
 include_once '../Presentation/header.php';
 
 include_once '../DataAcces/connectDB.php';
 
-
-//upload for profile
 if (isset($_POST['submit'])) {
     $file = $_FILES['file'];
 
@@ -76,14 +76,14 @@ function resize_image($file,$max_resolution){
 
                 // move file to directory
                 //move_uploaded_file($fileName , $final_file_path);
-                resize_image($final_file_path,"200");
+                resize_image($final_file_path,"400");
                 
 
                 //move_uploaded_file($fileName , $final_file_path);
                 
                 
                 // save to db
-                $sql = "UPDATE users SET profile_img = ? WHERE userID = ?";
+                $sql = "UPDATE posts SET post_img = ? WHERE userID = ?";
                 $stmt = mysqli_stmt_init($conn);
                 mysqli_stmt_prepare($stmt, $sql);
                 mysqli_stmt_bind_param($stmt, "si", $final_file_path,$userid);
@@ -91,7 +91,7 @@ function resize_image($file,$max_resolution){
                 
                 mysqli_stmt_close($stmt);
 
-                header("Location:../Presentation/profile.php");
+                header("Location:../Presentation/feed.php");
             } else{
                 echo "Your file is too big!";
             }
@@ -102,7 +102,3 @@ function resize_image($file,$max_resolution){
         echo "You can not upload files of this type!";
     }
 }
-
-
-
-
