@@ -14,10 +14,9 @@ include_once '../DataAcces/connectDB.php';
 </div>
 
 <?php
-	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID, comments.content
+	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID
     FROM Posts
-    JOIN users ON Posts.userID=users.userID
-    JOIN comments ON Posts.userID=comments.userID";
+    JOIN users ON Posts.userID=users.userID";
     $result = mysqli_query($conn, $query) or die("its ded");
     while($row = mysqli_fetch_assoc($result)){
         echo  

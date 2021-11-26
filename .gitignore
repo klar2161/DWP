@@ -10,6 +10,10 @@
 *.png
 *.jpeg
 *.jpg
+.reaction-sneez.png
+.reactions__love.png
+.reactions_brokenheart.png
+.reactions-clapping.png
 
 # User-specific stuff
 .idea/**/workspace.xml
