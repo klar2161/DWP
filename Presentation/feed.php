@@ -42,6 +42,8 @@ include_once '../Application/upload-post.php';
         <br>
         <button type="submit" name="submit">Comment</button>
     </form><?php
+
+    include 'reactions.php';
     }
 ?>
 
