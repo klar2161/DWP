@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
 function resize_image($file,$max_resolution){
 
-    var_dump($file,$max_resolution);
+    //var_dump($file,$max_resolution);
 
     if(file_exists($file)){
         $original_image = imagecreatefromjpeg($file);
@@ -35,11 +35,17 @@ function resize_image($file,$max_resolution){
         $new_width = $max_resolution;
         $new_height = $original_height * $ratio;
 
+
+       // var_dump($new_width, $new_height);
+
+
         //if that didnt work 
         if ($new_height > $max_resolution) {
             $ratio = $max_resolution / $original_height;
             $new_height = $max_resolution;
             $new_width = $original_width * $ratio;
+            
+            
         }
 
         if ($original_image) {
@@ -47,8 +53,14 @@ function resize_image($file,$max_resolution){
             imagecopyresampled($new_image,$original_image,0,0,0,0,$new_width,$new_height,$original_width,$original_height);
 
             imagejpeg($new_image,$file,90);
+
+
+
+            
         }
     }
+
+    echo "done with resising";
 }
 
     if (in_array($fileActualExt, $allowed)) {
@@ -57,12 +69,16 @@ function resize_image($file,$max_resolution){
                // $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDestination = '../uploads/'.$_FILES['file']['tmp_name'];
                 
+                move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
+                
+
                 // move file to directory
-                move_uploaded_file($fileName , $final_file_path);
-            
+                //move_uploaded_file($fileName , $final_file_path);
                 resize_image($final_file_path,"200");
                 
-                move_uploaded_file($_FILES['file']['tmp_name'], $final_file_path);
+
+                //move_uploaded_file($fileName , $final_file_path);
+                
                 
                 // save to db
                 $sql = "UPDATE users SET profile_img = ? WHERE userID = ?";

@@ -17,7 +17,7 @@
     
 <nav>
     <div class="wrapper">
-        <a href="index.php"><img src="../img/logo2.png" alt="Logo" class="logo"></a>
+        <a href="index.php"><img src="img/logo2.png" alt="Logo" class="logo"></a>
         <ul>
             <!--<li><a href="index.php">Home</a></li> -->
             <li><a href="about.php">About</a></li>
