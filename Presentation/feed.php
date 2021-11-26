@@ -2,22 +2,30 @@
 
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
+include_once '../Application/upload-post.php';
 
 ?>
 
+  <br></br>
+
+ 
 <div class="postcontainer">
     <form action="../Application/feed.inc.php" method="post" class="postbox">
             <textarea type="text" name="postcontent"  rows="7" cols="64" style="" placeholder="What's in your head?" required></textarea>
             <br>
             <button type="submit" name="submit" class="postbox">Post</button>
     </form>
-</div>
+    
+   <form class="form-upload-post" action="../Application/upload-post.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <button type="submit" name="submit">UPLOAD</button>
+  </form>
+</div> 
 
 <?php
-	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID, comments.content
+	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
     FROM Posts
-    JOIN users ON Posts.userID=users.userID
-    JOIN comments ON Posts.userID=comments.userID";
+    JOIN users ON Posts.userID=users.userID";
     $result = mysqli_query($conn, $query) or die("its ded");
     while($row = mysqli_fetch_assoc($result)){
         echo  
@@ -25,7 +33,7 @@ include_once '../DataAcces/connectDB.php';
         "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
         <br>".
         "<h2>".$row['post']."</h2>"."<br>".
-        "<h2>".$row['content']."</h2>";
+        "<img".$row['post_img'].">";
 
         ?><form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
@@ -39,6 +47,10 @@ include_once '../DataAcces/connectDB.php';
 
 <section class="index-intro">
 
+
+<img src="<?php
+  echo $row["post_img"];
+  ?>" alt="" >
 
 <?php
 
