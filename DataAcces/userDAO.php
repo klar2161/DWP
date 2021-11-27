@@ -1,15 +1,11 @@
 <?php
-include_once 'connectDB.php';
+include_once 'connectionFactory.php';
 
 class UserDAO {
 
     function getSpecificUser($userId) {
-        $serverName = "localhost";
-        $dBUsername = "root";
-        $dBPassword = "";
-        $dBName = "DeepbookDB";
-
-        $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+        $dbFactory = new connectionFactory();
+        $conn = $dbFactory->createConnection();
 
         
         $sql = "SELECT * FROM users WHERE userID = ?";
@@ -39,21 +35,34 @@ class UserDAO {
 
 
     // used by an admin
-    function deleteUser($userId) {
-        //header("Refresh:0; url=../Presentation/adminpanel.php");
-        if(isset($_GET['id'])){
-            $query = "DELETE FROM `Users` WHERE `userID`=". $_GET['id'];
-            mysqli_query($conn, $query);
-            
+    function deleteUser($userid) {
+        $dbFactory = new connectionFactory();
+        $conn = $dbFactory->createConnection();    
+
+        $sql = "DELETE FROM users WHERE userID =?";
+        $stmt = mysqli_stmt_init($conn);
+        mysqli_stmt_prepare($stmt, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $userid);
+        mysqli_stmt_execute($stmt);
         
-        }
+        mysqli_stmt_close($stmt);
     }
 
+
+    function changeProfileImg($filepath,$userid){
+                    $dbFactory = new connectionFactory();
+                    $conn = $dbFactory->createConnection();
+
+                    // save to db
+                    $sql = "UPDATE users SET profile_img = ? WHERE userID = ?";
+                    $stmt = mysqli_stmt_init($conn);
+                    mysqli_stmt_prepare($stmt, $sql);
+                    mysqli_stmt_bind_param($stmt, "si", $filepath,$userid);
+                    mysqli_stmt_execute($stmt);
+                    
+                    mysqli_stmt_close($stmt);
+    }
 }
-
-
-
-?>
 
 
 

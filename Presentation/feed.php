@@ -2,7 +2,7 @@
 
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
-include_once '../Application/upload-post.php';
+
 
 ?>
 

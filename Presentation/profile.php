@@ -23,7 +23,7 @@ $row = $userDAO->getSpecificUser($_SESSION["userid"]);
 
 <div class="container-profile">
 <img src="<?php
-  echo $row["cover_img"] ?? "uploads/placeholder.png";
+  echo $row["cover_img"] ?? "../uploads/placeholder.png";
   ?>" alt="" style="width:100%;height:500px">
 
 <form class="form-cover" action="../Application/upload-cover.php" method="POST" enctype="multipart/form-data">
@@ -35,12 +35,12 @@ $row = $userDAO->getSpecificUser($_SESSION["userid"]);
 <div class="card">
   
   <img src="<?php
-  echo $row["profile_img"] ?? "uploads/default.jpeg";
+  echo $row["profile_img"] ?? "../uploads/default.jpeg";
   ?>" alt="" >
   <br></br>
 
  <form class="form-upload" action="../Application/upload.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file">
+  <input type="file" name="image">
   <button type="submit" name="submit">UPLOAD</button>
   </form>
 

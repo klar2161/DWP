@@ -1,9 +1,12 @@
 <?php
 include_once 'usersA.php';
+include_once '../DataAcces/userDAO.php';
 header("Refresh:0; url=../Presentation/adminpanel.php");
-if(isset($_GET['id'])){
-    $query = "DELETE FROM `Users` WHERE `userID`=". $_GET['id'];
-    mysqli_query($conn, $query);
-    
 
+if(isset($_GET['id'])){
+    $userid = $_GET['id'];
+
+    $userDB = new userDAO();
+    $userDB->deleteUser($userid);
+    
 }
