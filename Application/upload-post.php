@@ -83,13 +83,7 @@ function resize_image($file,$max_resolution){
                 
                 
                 // save to db
-                $sql = "UPDATE posts SET post_img = ? WHERE userID = ?";
-                $stmt = mysqli_stmt_init($conn);
-                mysqli_stmt_prepare($stmt, $sql);
-                mysqli_stmt_bind_param($stmt, "si", $final_file_path,$userid);
-                mysqli_stmt_execute($stmt);
                 
-                mysqli_stmt_close($stmt);
 
                 header("Location:../Presentation/feed.php");
             } else{
