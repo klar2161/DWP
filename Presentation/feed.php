@@ -30,11 +30,14 @@ include_once '../DataAcces/connectDB.php';
 
     while($row = mysqli_fetch_assoc($result)){
         echo  
+        "<a href='../Presentation/post.php'>". 
+        "<h1>".$row["postID"]."</h1>". 
         "<h1>".$row["usersuid"]."</h1>".
         "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
         <br>".
         "<h2>".$row['post']."</h2>"."<br>".
-        "<img src=".$row['post_img'].">";
+        "<img src=".$row['post_img'].">".
+        "</a>";
 
         ?><form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
