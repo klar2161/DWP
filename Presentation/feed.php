@@ -2,6 +2,7 @@
 
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
+//include_once '../DataAcces/postDAO.php';
 
 
 ?>
@@ -18,11 +19,15 @@ include_once '../DataAcces/connectDB.php';
     </form>
 </div> 
 
-<?php
+<?php 
 	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
     FROM Posts
     JOIN users ON Posts.userID=users.userID";
     $result = mysqli_query($conn, $query) or die("its ded");
+    
+    /*$postDAO = new PostDAO(); //create object from class
+    $row = $postDAO->getSpecificPost();*/
+
     while($row = mysqli_fetch_assoc($result)){
         echo  
         "<h1>".$row["usersuid"]."</h1>".

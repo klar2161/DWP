@@ -1,4 +1,7 @@
 <?php
+    require_once '../DataAcces/connectDB.php';
+   include_once '../DataAcces/userDAO.php';
+   include_once 'functions.inc.php';
 
 if (isset($_POST["submit"])) {
 
@@ -7,8 +10,7 @@ if (isset($_POST["submit"])) {
     $pwd = $_POST["pwd"];
     $pwdRepeat = $_POST["pwdrepeat"];
 
-    require_once '../DataAcces/connectDB.php';
-    require_once 'functions.inc.php';
+
 
     if (emptyInputSignup($email, $username, $pwd, $pwdRepeat) !== false) {
         header("location: ../Presentation/signup.php?error=emptyinput");
@@ -31,7 +33,8 @@ if (isset($_POST["submit"])) {
         exit();
     }
     
-    createUser($conn, $email, $username, $pwd);
+    $userDB = new UserDAO();
+    $filePath  = $userDB->createUser($conn, $email, $username, $pwd);
 
 }
 else {

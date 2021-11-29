@@ -27,7 +27,7 @@ $row = $userDAO->getSpecificUser($_SESSION["userid"]);
   ?>" alt="" style="width:100%;height:500px">
 
 <form class="form-cover" action="../Application/upload-cover.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file">
+  <input type="file" name="image">
   <button type="submit" name="submit">UPLOAD COVER</button>
 </form>
 

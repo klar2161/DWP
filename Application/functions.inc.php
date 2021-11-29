@@ -1,4 +1,5 @@
 <?php
+include_once '../DataAcces/userDAO.php';
 // SIGNUP Functions --------------------------------
 function emptyInputSignup($email, $username, $pwd, $pwdRepeat) {
     $results;
@@ -95,25 +96,7 @@ function emailExists($conn, $email) {
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $email, $username, $pwd) {
-    
-    $sql = "INSERT INTO users (usersEmail, usersUid, usersPwd) VALUES (?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../Presentation/signup.php?error=stmtfailed");
-        exit();
-    }
 
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-    $hashedPwd_salt = password_hash($pwd, PASSWORD_DEFAULT,array('cost' =>9));
-
-
-    mysqli_stmt_bind_param($stmt, "sss", $email, $username, $hashedPwd_salt);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    header("location: ../Presentation/signup.php?error=none");
-        exit();
-}
 
 
 // LOGIN Functions --------------------------------

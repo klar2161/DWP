@@ -5,20 +5,6 @@ include_once '../DataAcces/connectDB.php';
 include_once '../Application/functions.inc.php';
 
 
-
-
-$sql = "SELECT * FROM Platform"; 
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
-mysqli_stmt_execute($stmt);
-
-$resultData = mysqli_stmt_get_result($stmt);
-$row = mysqli_fetch_assoc($resultData);
-
-
-
-
-
 if (isset($_SESSION["useruid"])) {
     echo "<h1 style='color:white'>Welcome here " . $_SESSION["useruid"] . "</h1>";
 } 

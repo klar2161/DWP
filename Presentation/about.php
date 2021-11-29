@@ -4,15 +4,12 @@ include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
 include_once '../Application/functions.inc.php';
 include_once '../Application/banned.php';
+include_once '../DataAcces/platformDAO.php';
 
 
-$sql = "SELECT * FROM Platform"; 
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
-mysqli_stmt_execute($stmt);
 
-$resultData = mysqli_stmt_get_result($stmt);
-$row = mysqli_fetch_assoc($resultData);
+$platformDAO = new PlatformDAO(); //create object from class
+$row = $platformDAO->getInfoFromDB();
 
  ?>
 
