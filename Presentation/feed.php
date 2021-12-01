@@ -2,7 +2,7 @@
 
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
-//include_once '../DataAcces/postDAO.php';
+include_once '../DataAcces/postDAO.php';
 
 
 ?>
@@ -20,7 +20,8 @@ include_once '../DataAcces/connectDB.php';
 </div> 
 
 <?php 
-	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
+	  $query = 
+    "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
     FROM Posts
     JOIN users ON Posts.userID=users.userID";
     $result = mysqli_query($conn, $query) or die("its ded");
@@ -30,25 +31,37 @@ include_once '../DataAcces/connectDB.php';
 
     while($row = mysqli_fetch_assoc($result)){
         echo  
-        "<a href='../Presentation/post.php'>". 
-        "<h1>".$row["postID"]."</h1>". 
+        "<a href='../Presentation/post.php'>".  
         "<h1>".$row["usersuid"]."</h1>".
         "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
         <br>".
         "<h2>".$row['post']."</h2>"."<br>".
         "<img src=".$row['post_img'].">".
         "</a>";
+        echo include 'reactions.php';
+        echo"<h1>".$row["content"]."</h1>";
 
+      }
+      
         ?><form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
         <input type="hidden" name="uid" value="<?php echo $row["userID"]; ?>">
         <input type="hidden" name="postID" value="<?php echo $row["postID"]; ?>">
         <br>
         <button type="submit" name="submit">Comment</button>
-    </form><?php
+    </form><?php 
+  
+    /*$query = "SELECT*FROM comments";
+    $result = mysqli_query($conn, $query) or die("its ded");
+      /*$postDAO = new PostDAO();
+      $row = $postDAO->getSpecificComment($_GET["content"]);*/
 
-    include 'reactions.php';
-    }
+    /*while($row = mysqli_fetch_assoc($result)){
+        echo   
+        "<h2>".$row["content"]."</h2>";
+      }*/
+
+
 ?>
 
 <section class="index-intro">
@@ -57,6 +70,8 @@ include_once '../DataAcces/connectDB.php';
 <img src="<?php
   echo $row["post_img"];
   ?>" alt="" >
+
+
 
 <?php
 

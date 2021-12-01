@@ -9,7 +9,6 @@ if (isset($_POST['content'])) {
     $userid = $_POST["uid"];
     $postID = $_POST["postID"];
     
-    
     $commentDB = new PostDAO();
     $commentDB->createComment($conn, $content, $userid, $postID);
 
