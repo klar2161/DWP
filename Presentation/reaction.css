@@ -65,25 +65,25 @@
 .emo-clap {
   left: 10px;
   transition-delay: 0s;
-  background-image: url("../img/reactions-clapping.png");
+  background-image: url("img/reactions-clapping.png");
 }
 
 .emo-love {
   left: 68px;
   transition-delay: 0.05s;
-  background-image: url("../img/reactions__love.png");
+  background-image: url("img/reactions__love.png");
 }
 
 .emo-brokenheart {
   left: 126px;
   transition-delay: 0.1s;
-  background-image: url("../img/reactions_brokenheart.png");
+  background-image: url("img/reactions_brokenheart.png");
 }
 
 .emo-sneez {
   left: 184px;
   transition-delay: 0.15s;
-  background-image: url("../img/reaction-sneez.png");
+  background-image: url("img/reaction-sneez.png");
 }
 
 .reaction-btn:hover .emoji {
@@ -181,25 +181,25 @@
 }
 
 .like-btn-clap {
-  background-image: url("../img/reactions-clapping.png");
+  background-image: url("img/reactions-clapping.png");
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .like-btn-love {
-  background-image: url("../img/reactions__love.png");
+  background-image: url("img/reactions__love.png");
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .like-btn-brokenheart {
-  background-image: url("../img/reactions_brokenheart.png");
+  background-image: url("img/reactions_brokenheart.png");
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }
 
 .like-btn-sneez {
-  background-image: url("../img/reaction-sneez.png");
+  background-image: url("img/reaction-sneez.png");
   background-repeat: no-repeat;
   background-size: 16px 16px;
 }

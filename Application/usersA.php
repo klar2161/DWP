@@ -4,6 +4,7 @@ include_once ("../DataAcces/userDAO.php");
 
 
 $userDAO = new UserDAO(); //create object from class
+$userDAO->getSpecificUser("userID");
 
 $query = "SELECT*FROM `Users`";
 $result = mysqli_query($conn, $query) or die("unlucky");
