@@ -37,7 +37,8 @@ include_once '../DataAcces/postDAO.php';
         <br>".
         "<h2>".$row['post']."</h2>"."<br>".
         "<img src=".$row['post_img'].">".
-        "</a>";
+        "</a>".
+        "<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>";
         echo include 'reactions.php';
         echo"<h1>".$row["content"]."</h1>";
 
