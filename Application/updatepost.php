@@ -3,7 +3,7 @@
     include_once '../DataAcces/connectionFactory.php';
 
     function updatePost($conn,$post,$id) {
-        /*$dbFactory = new connectionFactory();
+        $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
 
         $sql = "UPDATE posts SET post = ? WHERE postID = ?";
@@ -15,7 +15,7 @@
         mysqli_stmt_bind_param($stmt, "si", $post,$id);
         mysqli_stmt_execute($stmt);
         
-        mysqli_stmt_close($stmt);*/
+        mysqli_stmt_close($stmt);
         
     }
     
@@ -36,7 +36,7 @@
 }
 ?>
 
-<h3>Update Data</h3>
+<h3>Update post</h3>
 
 <form method="POST">
   <textarea type="text" name="post"  rows="7" cols="64" style="" placeholder="What's in your head?"  ><?php echo $row["post"]; ?></textarea>
