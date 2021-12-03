@@ -1,29 +1,47 @@
 <?php
-    include_once '../DataAcces/connectDB.php';
-    
-	$query = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
+
+include_once 'header.php';
+include_once '../DataAcces/connectDB.php';
+include_once '../DataAcces/postDAO.php';
+
+
+?>
+
+<?php
+
+    $postid = $_GET['id']; 
+
+    $qry = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
     FROM Posts
-    JOIN users ON Posts.userID=users.userID
-    WHERE posts.postID= 4";
-    $result = mysqli_query($conn, $query) or die("its ded");
+    JOIN users ON Posts.userID=users.userID WHERE postid='$postid'";
+     
+
+    $result = mysqli_query($conn, $qry) or die("its ded");
+    
     while($row = mysqli_fetch_assoc($result)){
-        echo  
-        "<h1>".$row["postID"]."</h1>".
-        "<h1>".$row["usersuid"]."</h1>".
-        "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
-        <br>".
-        "<h2>".$row['post']."</h2>"."<br>".
-        "<img src=".$row['post_img'].">";
+        $postid=$row['postID'];
+          echo    
+          "<h1>".$row["usersuid"]."</h1>".
+          "<br>".
+          "<h2>".$row['post']."</h2>"."<br>".
+          "<img src=".$row['post_img'].">".
+          "</a>";
 
-        ?>
-        <form action="../Application/comment.php" method="post" class="postbox">
-        <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
-        <input type="hidden" name="uid" value="<?php echo $row["userID"]; ?>">
-        <input type="hidden" name="postID" value="<?php echo $row["postID"]; ?>">
-        <br>
-        <button type="submit" name="submit">Comment</button>
-    </form><?php
+          $postid=$row['postID'];
+          $comment_query = "SELECT * FROM comments 
+          JOIN posts 
+          JOIN users ON Posts.userID=users.userID
+          WHERE comments.postID = '$postid'";
+          $result = mysqli_query($conn, $comment_query) or die("its ded");
+          while($row = mysqli_fetch_assoc($result)){
+            echo  
+            "<h2>".$row["content"]."</h2>";
+          }
+        }
+?>
 
-    include 'reactions.php';
-    }
+<?php
+
+include_once 'footer.php';
+
 ?>

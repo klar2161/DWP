@@ -31,42 +31,43 @@ include_once '../DataAcces/postDAO.php';
     $row = $postDAO->getSpecificPost();*/
 
     while($row = mysqli_fetch_assoc($result)){
-        echo  
-        "<a href='../Presentation/post.php'>".  
+      $postid=$row['postID'];
+        echo    
         "<h1>".$row["usersuid"]."</h1>".
         "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
         <br>".
         "<h2>".$row['post']."</h2>"."<br>".
         "<img src=".$row['post_img'].">".
         "</a>".
-        "<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>";
-        echo include 'reactions.php';
-        echo"<h1>".$row["content"]."</h1>";
+        "<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>"."<br>".
+        "<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>"."<br>";
 
-      }
-      
-        ?><form action="../Application/comment.php" method="post" class="postbox">
+        include 'reactions.php';      
+?>
+    <form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
         <input type="hidden" name="uid" value="<?php echo $row["userID"]; ?>">
         <input type="hidden" name="postID" value="<?php echo $row["postID"]; ?>">
         <br>
         <button type="submit" name="submit">Comment</button>
-    </form><?php 
-  
-    /*$query = "SELECT*FROM comments";
-    $result = mysqli_query($conn, $query) or die("its ded");
-      /*$postDAO = new PostDAO();
-      $row = $postDAO->getSpecificComment($_GET["content"]);*/
-
-    /*while($row = mysqli_fetch_assoc($result)){
-        echo   
-        "<h2>".$row["content"]."</h2>";
-      }*/
-
-
+    </form>
+<?php 
+ /* $postid=$row['postID'];
+  $comment_query = "SELECT * FROM comments 
+  JOIN posts 
+  JOIN users ON Posts.userID=users.userID
+  WHERE comments.postID = '$postid'";
+  $result = mysqli_query($conn, $comment_query) or die("its ded");
+  while($row = mysqli_fetch_assoc($result)){
+    echo  
+    "<h2>".$row["content"]."</h2>";
+  }*/
+  }
 ?>
 
 <section class="index-intro">
+
+
 
 
 <img src="<?php
