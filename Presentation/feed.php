@@ -6,9 +6,6 @@ include_once '../DataAcces/postDAO.php';
 
 
 ?>
-
-  <br></br>
-
  
 <div class="postcontainer">
     <form action="../Application/feed.inc.php" method="post" class="postbox" enctype="multipart/form-data">
@@ -31,16 +28,18 @@ include_once '../DataAcces/postDAO.php';
     $row = $postDAO->getSpecificPost();*/
 
     while($row = mysqli_fetch_assoc($result)){
-      $postid=$row['postID'];
+        $postid=$row['postID'];
         echo    
         "<h1>".$row["usersuid"]."</h1>".
         "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
         <br>".
         "<h2>".$row['post']."</h2>"."<br>".
         "<img src=".$row['post_img'].">".
-        "</a>".
-        "<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>"."<br>".
-        "<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>"."<br>";
+        "<br>".
+        "<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>".
+        "<br>".
+        "<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
+        "<br>";
 
         include 'reactions.php';      
 ?>
@@ -52,16 +51,14 @@ include_once '../DataAcces/postDAO.php';
         <button type="submit" name="submit">Comment</button>
     </form>
 <?php 
- /* $postid=$row['postID'];
-  $comment_query = "SELECT * FROM comments 
-  JOIN posts 
-  JOIN users ON Posts.userID=users.userID
-  WHERE comments.postID = '$postid'";
-  $result = mysqli_query($conn, $comment_query) or die("its ded");
-  while($row = mysqli_fetch_assoc($result)){
-    echo  
-    "<h2>".$row["content"]."</h2>";
-  }*/
+  $postid=$row['postID'];
+  $comment_query = "SELECT content FROM comments 
+          WHERE comments.postID = '$postid'";
+          $result2 = mysqli_query($conn, $comment_query) or die("its ded");
+          while($row2 = mysqli_fetch_assoc($result2)){
+            echo  "<h2>".$row2["content"]."</h2>";
+          }
+          
   }
 ?>
 

@@ -1,6 +1,7 @@
 <?php
     include_once '../DataAcces/connectDB.php';
     include_once '../DataAcces/connectionFactory.php';
+    include_once 'session.php';
 
     function updatePost($conn,$post,$id) {
         $dbFactory = new connectionFactory();

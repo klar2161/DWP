@@ -10,7 +10,7 @@ include_once '../DataAcces/postDAO.php';
 <?php
 
     $postid = $_GET['id']; 
-
+    
     $qry = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
     FROM Posts
     JOIN users ON Posts.userID=users.userID WHERE postid='$postid'";
@@ -27,15 +27,11 @@ include_once '../DataAcces/postDAO.php';
           "<img src=".$row['post_img'].">".
           "</a>";
 
-          $postid=$row['postID'];
-          $comment_query = "SELECT * FROM comments 
-          JOIN posts 
-          JOIN users ON Posts.userID=users.userID
+          $comment_query = "SELECT content FROM comments 
           WHERE comments.postID = '$postid'";
           $result = mysqli_query($conn, $comment_query) or die("its ded");
           while($row = mysqli_fetch_assoc($result)){
-            echo  
-            "<h2>".$row["content"]."</h2>";
+            echo  "<h2>".$row["content"]."</h2>";
           }
         }
 ?>
