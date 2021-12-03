@@ -23,7 +23,8 @@ include_once '../DataAcces/postDAO.php';
 	  $query = 
     "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
     FROM Posts
-    JOIN users ON Posts.userID=users.userID";
+    JOIN users ON Posts.userID=users.userID
+    ORDER BY postID DESC";
     $result = mysqli_query($conn, $query) or die("its ded");
     
     /*$postDAO = new PostDAO(); //create object from class

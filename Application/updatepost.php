@@ -22,10 +22,10 @@
 
     $id = $_GET['id']; 
 
-    $qry = mysqli_query($conn,"select * from posts where postid='$id'"); 
+    $qry = mysqli_query($conn,"SELECT * FROM posts WHERE postid='$id'"); 
 
     $row = mysqli_fetch_array($qry); 
-
+    
     if(isset($_POST['post'])) 
     {
         $post = $_POST['post'];;
