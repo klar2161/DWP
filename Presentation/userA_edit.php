@@ -26,7 +26,6 @@ include_once '../DataAcces/userDAO.php';
 ?>  
 
 <form method="post">
-    <input type="hidden" name="id" value="<?php echo $row["userID"];?>">
     <input type="text" name="email" value="<?php echo $row["usersEmail"];?>">
     <input type="text" name="uid" value="<?php echo $row["usersUid"];?>">
     <input type="submit" name="submit" value="Update">
@@ -37,15 +36,14 @@ include_once '../DataAcces/userDAO.php';
     
     if(isset($_POST['submit'])) 
     {       
-        $id = $_POST["id"];
         $email = $_POST["email"];
         $username = $_POST["uid"];
         
         $adminUpdate = new UserDAO();
-        $adminUpdate->updateUserAdmin($email,$username,$id);
-    
-    }  
+        $adminUpdate->updateUserAdmin($username,$email);
 
+        header("location: ../Presentation/adminpanel.php");
+    }  
 ?> 
 </body>
 </html>

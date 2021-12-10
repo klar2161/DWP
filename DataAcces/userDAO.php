@@ -140,17 +140,17 @@ class UserDAO {
         mysqli_stmt_close($stmt);
     }
 
-    function updateUserAdmin($email,$username,$id) {
+    function updateUserAdmin($username,$email) {
         $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
 
-        $sql = "UPDATE users SET usersEmail = ?, usersUid = ? WHERE userID = $id";
+        $sql = "UPDATE users SET `usersUid` = ?, `usersEmail` = ? WHERE `userID` = ?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("location: ../Presentation/adminpanel.php");
            exit();
        }
-        mysqli_stmt_bind_param($stmt, "ssi", $email,$username,$id);
+        mysqli_stmt_bind_param($stmt, "ssi",$username,$email,$_GET['id']);
         mysqli_stmt_execute($stmt);
         
         mysqli_stmt_close($stmt);
