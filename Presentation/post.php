@@ -29,9 +29,9 @@ include_once '../DataAcces/postDAO.php';
 
           $comment_query = "SELECT content FROM comments 
           WHERE comments.postID = '$postid'";
-          $result = mysqli_query($conn, $comment_query) or die("its ded");
-          while($row = mysqli_fetch_assoc($result)){
-            echo  "<h2>".$row["content"]."</h2>";
+          $comment_result = mysqli_query($conn, $comment_query) or die("its ded");
+          while($comment_row = mysqli_fetch_assoc($comment_result)){
+            echo  "<h2>".$comment_row["content"]."</h2>";
           }
         }
 ?>

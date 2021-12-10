@@ -1,45 +1,60 @@
 <?php
+    include_once '../Presentation/header.php';
     include_once '../DataAcces/connectDB.php';
     include_once '../DataAcces/connectionFactory.php';
-    include_once 'session.php';
+    include_once '../DataAcces/postDAO.php';
 
-    function updatePost($conn,$post,$id) {
-        $dbFactory = new connectionFactory();
-        $conn = $dbFactory->createConnection();
+    ?>
 
-        $sql = "UPDATE posts SET post = ? WHERE postID = ?";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-           header("location: ../Presentation/feed.php");
-           exit();
-       }
-        mysqli_stmt_bind_param($stmt, "si", $post,$id);
-        mysqli_stmt_execute($stmt);
-        
-        mysqli_stmt_close($stmt);
-        
-    }
+    <?php
+
+    $postid = $_GET['id']; 
     
+    $qry = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
+    FROM Posts
+    JOIN users ON Posts.userID=users.userID WHERE postid='$postid'";
+     
 
-    $id = $_GET['id']; 
+    $result = mysqli_query($conn, $qry) or die("its ded");
+    
+    while($row = mysqli_fetch_assoc($result)){
+        $postid=$row['postID'];
+          echo    
+          "<h1>".$row["usersuid"]."</h1>".
+          "<br>".
+          "<h2>".$row['post']."</h2>"."<br>".
+          "<img src=".$row['post_img'].">".
+          "</a>";
 
+          $comment_query = "SELECT content FROM comments 
+          WHERE comments.postID = '$postid'";
+          $comment_result = mysqli_query($conn, $comment_query) or die("its ded");
+
+        }
+?>
+
+<?php
+    $id = $_GET['id'];
+     
     $qry = mysqli_query($conn,"SELECT * FROM posts WHERE postid='$id'"); 
 
     $row = mysqli_fetch_array($qry); 
     
     if(isset($_POST['post'])) 
     {
-        $post = $_POST['post'];;
+        $post = $_POST['post'];
 
-        updatePost($conn, $post, $id); 	
+        $dbFactory = new postDAO();
+        $datapost = $dbFactory->updatePost($conn, $post, $id);
+ 	
 
         header("location: ../Presentation/feed.php");
-}
+    } 
 ?>
 
 <h3>Update post</h3>
 
-<form method="POST">
+<form method="post">
   <textarea type="text" name="post"  rows="7" cols="64" style="" placeholder="What's in your head?"  ><?php echo $row["post"]; ?></textarea>
   <input type="submit" name="update" value="Update">
 </form>
