@@ -69,9 +69,9 @@ include_once '../Application/postPinnSwitcher.php';
   $postid=$row['postID'];
   $comment_query = "SELECT content FROM comments 
           WHERE comments.postID = '$postid'";
-          $result2 = mysqli_query($conn, $comment_query) or die("its ded");
-          while($row2 = mysqli_fetch_assoc($result2)){
-            echo  "<h2>".$row2["content"]."</h2>";
+          $commentresult = mysqli_query($conn, $comment_query) or die("its ded");
+          while($commentrow = mysqli_fetch_assoc($commentresult)){
+            echo  "<h2>".$commentrow["content"]."</h2>";
           }
           
   }

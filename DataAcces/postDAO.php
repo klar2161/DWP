@@ -88,4 +88,20 @@ class PostDAO {
         mysqli_stmt_close($stmt);
     }
 
+    function updatePost($conn,$post,$id) {
+        $dbFactory = new connectionFactory();
+        $conn = $dbFactory->createConnection();
+
+        $sql = "UPDATE posts SET post = ? WHERE postID = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+           header("location: ../Presentation/feed.php");
+           exit();
+       }
+        mysqli_stmt_bind_param($stmt, "si", $post,$id);
+        mysqli_stmt_execute($stmt);
+        
+        mysqli_stmt_close($stmt);
+        
+    }
     }

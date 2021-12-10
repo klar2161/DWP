@@ -22,6 +22,24 @@ class UserDAO {
         return $row;
     }
 
+    function getSpecificEditUser($userId) {
+        $dbFactory = new connectionFactory();
+        $conn = $dbFactory->createConnection();
+        
+        $sql = "SELECT * FROM users WHERE userID = $userId";
+        $stmt = mysqli_stmt_init($conn);
+        mysqli_stmt_prepare($stmt, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+
+        $resultData = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($resultData);
+
+        mysqli_stmt_close($stmt);
+
+        return $row;
+    }
+
     // user wide
     function updateUser($email,$username,$userid) {
         $dbFactory = new connectionFactory();
@@ -120,7 +138,24 @@ class UserDAO {
         mysqli_stmt_execute($stmt);
         
         mysqli_stmt_close($stmt);
-}
+    }
+
+    function updateUserAdmin($username,$email) {
+        $dbFactory = new connectionFactory();
+        $conn = $dbFactory->createConnection();
+
+        $sql = "UPDATE users SET `usersUid` = ?, `usersEmail` = ? WHERE `userID` = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../Presentation/adminpanel.php");
+           exit();
+       }
+        mysqli_stmt_bind_param($stmt, "ssi",$username,$email,$_GET['id']);
+        mysqli_stmt_execute($stmt);
+        
+        mysqli_stmt_close($stmt);
+        
+    }
 
     
 
