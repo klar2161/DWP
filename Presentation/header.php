@@ -12,6 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login PHP</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
 </head>
 <body>
     

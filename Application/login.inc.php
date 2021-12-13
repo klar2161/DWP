@@ -1,8 +1,12 @@
 <?php
-
-if (isset($_POST["submit"])) {
-
-    $username = $_POST["uid"];
+if (isset($_POST["sub"])) {
+    if(!empty($_POST['g-recaptcha-response']))
+    {
+          $secret = '6LdYQ48dAAAAAAR6iSgdW6MDXbcj6hKMpxxA9b9T';
+          $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+          $responseData = json_decode($verifyResponse);
+          if($responseData->success)
+              $message = "g-recaptcha varified successfully";    $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
 
     require_once '../DataAcces/connectDB.php';
@@ -14,7 +18,12 @@ if (isset($_POST["submit"])) {
     }
 
     loginUser($conn, $username, $pwd);
+    }
 
+          else{
+              $message = "Some error in vrifying g-recaptcha";
+         echo $message;
+     }
  }
 
  else {

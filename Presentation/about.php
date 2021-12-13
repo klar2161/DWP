@@ -1,5 +1,4 @@
 <?php
-
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
 include_once '../Application/functions.inc.php';

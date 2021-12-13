@@ -3,15 +3,31 @@
 include_once 'header.php';
 
 ?>
-
+<html>
 <section class="login-form">
     <h2>LOG IN</h2>
     <br></br>
-    <form action="../Application/login.inc.php" method="post">
-        <input type="text" name="uid" placeholder="Username..">  
-        <input type="password" name="pwd" placeholder="Password..">
-        <button type="submit" name="submit">Log In</button>
-    </form>
+
+
+
+
+        <form method="post" action="../Application/login.inc.php" id="demo-form">
+                   <input type="text" name="uid" placeholder="Username..">  
+            <input type="password" name="pwd" placeholder="Password.."> <input type="hidden" value="sub" name="sub">
+        <?php
+          include_once('../Application/recaptchalib.php');
+          $publickey = "6LdYQ48dAAAAAGCYA5Gza-EbqpaV29KiSdrIc-7C"; // you got this from the signup page
+          echo recaptcha_get_html($publickey);
+          
+        ?>
+        <button class="g-recaptcha" 
+        data-sitekey="6LdYQ48dAAAAAGCYA5Gza-EbqpaV29KiSdrIc-7C" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+
+      </form>
+      </html>
+    
     <?php
 
 if (isset($_GET["error"])) {

@@ -9,10 +9,6 @@ if (isset($_SESSION["useruid"])) {
     echo "<h1 style='color:white'>Welcome here " . $_SESSION["useruid"] . "</h1>";
 } 
 
-
-
-
-
 include_once 'footer.php';
 ?>
 
