@@ -11,6 +11,7 @@ $result = mysqli_query($conn, $query) or die("unlucky");
 while($row = mysqli_fetch_array($result)){
     echo 
     $row["userID"]. " - ".
+    "<a href='../Presentation/userA_edit.php?id=".$row['userID']."'>Edit profile.</a>".
     $row["usersUid"]. " - ". 
     $row["usersEmail"]. " - ". 
     $row["user_level"]." - " .
@@ -22,4 +23,6 @@ while($row = mysqli_fetch_array($result)){
     
 }
 ?>
+
+
 

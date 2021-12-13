@@ -32,9 +32,6 @@ class Uploader {
 }
     private function resizeImage($file,$max_resolution){
         
-
-            //var_dump($file,$max_resolution);
-        
             if(file_exists($file)){
                 $original_image = imagecreatefromjpeg($file);
         
@@ -50,14 +47,11 @@ class Uploader {
         
                // var_dump($new_width, $new_height);
         
-        
                 //if that didnt work 
                 if ($new_height > $max_resolution) {
                     $ratio = $max_resolution / $original_height;
                     $new_height = $max_resolution;
                     $new_width = $original_width * $ratio;
-                    
-                    
                 }
         
                 if ($original_image) {
@@ -65,10 +59,6 @@ class Uploader {
                     imagecopyresampled($new_image,$original_image,0,0,0,0,$new_width,$new_height,$original_width,$original_height);
         
                     imagejpeg($new_image,$file,90);
-        
-        
-        
-                    
                 }
             }
         

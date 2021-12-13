@@ -25,6 +25,7 @@
             post text,
             post_img varchar (255) NULL,
             userID int NOT NULL,
+            is_pinned tinyint(1) DEFAULT 0,
             FOREIGN KEY (userID) REFERENCES users (userID)
         )ENGINE=InnoDB;
 

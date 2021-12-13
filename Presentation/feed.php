@@ -3,6 +3,8 @@
 include_once 'header.php';
 include_once '../DataAcces/connectDB.php';
 include_once '../DataAcces/postDAO.php';
+include_once '../Application/functions.inc.php';
+include_once '../Application/postPinnSwitcher.php';
 
 
 ?>
@@ -23,27 +25,40 @@ include_once '../DataAcces/postDAO.php';
 
 <?php 
 	  $query = 
-    "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
+    "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID, Posts.post_img, Posts.is_pinned
     FROM Posts
     JOIN users ON Posts.userID=users.userID
-    ORDER BY postID DESC";
+    ORDER BY is_pinned DESC, postID DESC";
     $result = mysqli_query($conn, $query) or die("its ded");
     
     /*$postDAO = new PostDAO(); //create object from class
-    $row = $postDAO->getSpecificPost();*/
+    $row = $postDAO->getAllPosts();*/
 
     while($row = mysqli_fetch_assoc($result)){
         $postid=$row['postID'];
-        echo    
-        "<h1>".$row["usersuid"]."</h1>".
-        "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
-        <br>".
-        "<h2>".$row['post']."</h2>"."<br>".
-        "<img src=".$row['post_img'].">".
-        "<br>".
-        "<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>".
-        "<br>".
-        "<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
+           
+        echo "<h1>".$row["usersuid"]."</h1>";
+        if (isAdmin()) {
+          if (boolval($row["is_pinned"])==true) {
+            echo "<a href='../Application/postPinnSwitcher.php?postID=".$row['postID']."&pinnAction=false' name='unpinn'>Unpinn this post</a>";
+          }else{
+          echo "<a href='../Application/postPinnSwitcher.php?postID=".$row['postID']."&pinnAction=true' name='pinn'>Pinn this post</a>";
+          }
+          echo "<br>";
+        }
+
+        if (boolval($row["is_pinned"])==true) {
+          echo "<h3 style='color:green';>This post is pinned</h3>";
+        }
+
+        echo "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
+        <br>";
+        echo "<h2>".$row['post']."</h2>"."<br>";
+        echo "<img src=".$row['post_img'].">".
+        "<br>";
+        echo"<a href='../Application/updatepost.php?id=".$row['postID']."'>Edit</a>".
+        "<br>";
+        echo"<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
         "<br>";
 
         include 'reactions.php';      
@@ -59,9 +74,9 @@ include_once '../DataAcces/postDAO.php';
   $postid=$row['postID'];
   $comment_query = "SELECT content FROM comments 
           WHERE comments.postID = '$postid'";
-          $result2 = mysqli_query($conn, $comment_query) or die("its ded");
-          while($row2 = mysqli_fetch_assoc($result2)){
-            echo  "<h2>".$row2["content"]."</h2>";
+          $commentresult = mysqli_query($conn, $comment_query) or die("its ded");
+          while($commentrow = mysqli_fetch_assoc($commentresult)){
+            echo  "<h2>".$commentrow["content"]."</h2>";
           }
           
   }
