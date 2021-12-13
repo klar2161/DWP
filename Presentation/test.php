@@ -54,7 +54,7 @@ foreach($feedData as $data)
     else
     {
         $like='<a href="#" class="reaction" id="like'.$data["postID"].'" rel="like"><i class="likeIconDefault" ></i>Like</a>';
-        }
+    }
 
 
     ?>
