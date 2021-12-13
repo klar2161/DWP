@@ -5,6 +5,8 @@ include_once '../DataAcces/connectDB.php';
 include_once '../DataAcces/postDAO.php';
 include_once '../Application/functions.inc.php';
 include_once '../Application/postPinnSwitcher.php';
+include_once '../Application/banned.php';
+
 
 
 ?>
@@ -25,10 +27,10 @@ include_once '../Application/postPinnSwitcher.php';
 
 <?php 
 	  $query = 
-    "SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned
+    "SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img
     FROM posts
     JOIN users ON posts.userID=users.userID
-    ORDER BY is_pinned DESC, postID DESC";
+    ORDER BY  postID DESC";
     $result = mysqli_query($conn, $query) or die("its ded");
     
     /*$postDAO = new PostDAO(); //create object from class
@@ -38,7 +40,7 @@ include_once '../Application/postPinnSwitcher.php';
         $postid=$row['postID'];
            
         echo "<h1>".$row["usersuid"]."</h1>";
-        if (isAdmin()) {
+/*         if (isAdmin()) {
           if (boolval($row["is_pinned"])==true) {
             echo "<a href='../Application/postPinnSwitcher.php?postID=".$row['postID']."&pinnAction=false' name='unpinn'>Unpinn this post</a>";
           }else{
@@ -49,7 +51,7 @@ include_once '../Application/postPinnSwitcher.php';
 
         if (boolval($row["is_pinned"])==true) {
           echo "<h3 style='color:green';>This post is pinned</h3>";
-        }
+        } */
 
         echo "<a href='../Application/deletepost.php?id=".$row['postID']."'>  X</a>
         <br>";
@@ -60,6 +62,7 @@ include_once '../Application/postPinnSwitcher.php';
         "<br>";
         echo"<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
         "<br>";
+
 
         //include 'reactions.php';      
 ?>
@@ -81,6 +84,9 @@ include_once '../Application/postPinnSwitcher.php';
           
   }
 ?>
+   
+
+
 
 <section class="index-intro">
 

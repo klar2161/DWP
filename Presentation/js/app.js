@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "../Presentation/ajaxReaction.php",
+      url: "ajaxReaction.php",
       data: dataString,
       cache: false,
       beforeSend: function () {},
@@ -66,7 +66,7 @@ $(document).ready(function () {
     var htmlData = '<i class="likeIconDefault" ></i>Like</a>';
     $.ajax({
       type: "POST",
-      url: "../Presentation/ajaxReaction.php",
+      url: "ajaxReaction.php",
       data: dataString,
       cache: false,
       beforeSend: function () {},

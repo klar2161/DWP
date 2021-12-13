@@ -7,6 +7,7 @@ include_once '../Application/session.php';
 $feed = new feed();
 $feedData=$feed->newsFeed();
 $userid=$_SESSION['userid'];
+
 ?>
 <!DOCTYPE html > 
 <html > 
@@ -22,7 +23,7 @@ $userid=$_SESSION['userid'];
 <script src="js/jquery.tooltipsterReaction.js"></script>
 <script src="js/jquery.tipsy.js"></script>
 <script src="js/app.js"></script>
-</head> 
+</head>
  
 <body> 
 

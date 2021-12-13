@@ -28,6 +28,8 @@
             <!--<li><a href="index.php">Home</a></li> -->
             <li><a href="about.php">About</a></li>
             <?php
+            include_once '../Application/banned.php';
+
 
                 if (isset($_SESSION["useruid"])) {
                     echo "<li><a href='feed.php'>Feed</a></li>";
