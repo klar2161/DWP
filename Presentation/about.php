@@ -30,6 +30,14 @@ $row = $platformDAO->getInfoFromDB();
      </p>
     <br></br>
     <br></br>
+
+    <?php if(isAdmin()) {
+    echo "<a href='about-edit.php'>";
+    echo "<button type='submit' name='submit'>EDIT</button>";
+    echo "</a>";
+    }
+  ?>
+  <br></br>
      <a href="../DataAcces/policies.php">Rules and Regulations</a>
  </body>
  </html>

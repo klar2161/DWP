@@ -3,6 +3,16 @@
 
 USE projectwebd_onlinedeepbook;
 
+<<<<<<< Updated upstream
+=======
+DROP TABLE IF EXISTS PostCommentKeyTable;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS Comments;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS Platform;
+
+
+>>>>>>> Stashed changes
 
 CREATE TABLE Platform (
             PlatformID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
