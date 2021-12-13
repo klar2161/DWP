@@ -11,9 +11,9 @@ include_once '../DataAcces/postDAO.php';
 
     $postid = $_GET['id']; 
     
-    $qry = "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
-    FROM Posts
-    JOIN users ON Posts.userID=users.userID WHERE postid='$postid'";
+    $qry = "SELECT posts.postID, users.usersuid, posts.post, posts.userID,posts.post_img
+    FROM posts
+    JOIN users ON posts.userID=users.userID WHERE postid='$postid'";
      
 
     $result = mysqli_query($conn, $qry) or die("its ded");

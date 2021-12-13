@@ -29,7 +29,7 @@ CREATE TABLE Platform (
         )ENGINE=InnoDB;
 
         
-        CREATE TABLE Posts (
+        CREATE TABLE posts (
             postID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
             post text,
             post_img varchar (255) NULL,
@@ -38,7 +38,7 @@ CREATE TABLE Platform (
             FOREIGN KEY (userID) REFERENCES users (userID)
         )ENGINE=InnoDB;
 
-        CREATE TABLE Comments (
+        CREATE TABLE comments (
             commentID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
             content varchar(255) NULL,
             userID int NOT NULL,

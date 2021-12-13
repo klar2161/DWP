@@ -25,9 +25,9 @@ include_once '../Application/postPinnSwitcher.php';
 
 <?php 
 	  $query = 
-    "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID, Posts.post_img, Posts.is_pinned
-    FROM Posts
-    JOIN users ON Posts.userID=users.userID
+    "SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned
+    FROM posts
+    JOIN users ON posts.userID=users.userID
     ORDER BY is_pinned DESC, postID DESC";
     $result = mysqli_query($conn, $query) or die("its ded");
     
@@ -61,7 +61,7 @@ include_once '../Application/postPinnSwitcher.php';
         echo"<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
         "<br>";
 
-        include 'reactions.php';      
+        //include 'reactions.php';      
 ?>
     <form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>

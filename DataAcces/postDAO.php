@@ -20,7 +20,7 @@ class PostDAO {
         $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
     
-        $sql = "INSERT INTO `Comments` (`commentID`, `content`, `userID`, `postID`) VALUES (NULL, ?, ?, ?);";
+        $sql = "INSERT INTO `comments` (`commentID`, `content`, `userID`, `postID`) VALUES (NULL, ?, ?, ?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("location: ../Presentation/feed.php");
@@ -56,9 +56,9 @@ class PostDAO {
         $conn = $dbFactory->createConnection();
 
         $sql = 
-        "SELECT Posts.postID, users.usersuid, Posts.post, Posts.userID,Posts.post_img
-        FROM Posts
-        JOIN users ON Posts.userID=users.userID
+        "SELECT posts.postID, users.usersuid, posts.post, posts.userID,posts.post_img
+        FROM posts
+        JOIN users ON posts.userID=users.userID
         ORDER BY postID DESC";
 
         $stmt = mysqli_stmt_init($conn);
