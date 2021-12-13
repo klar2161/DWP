@@ -7,6 +7,7 @@
 if (isset($_POST["submit"])) {
     $name = $_POST["Name"];
     $description = $_POST["Description"];
+    $platformid = $_POST["PlatformID"];
 
     // TODO check if empty, add updated to session
     if (empty($name)  or empty($description)) {
@@ -16,8 +17,8 @@ if (isset($_POST["submit"])) {
     
    
     $UpdateDB = new PlatformDAO();
-    $UpdateDB->updateInfoPlatform($name,$description,$platformid);
+    $UpdateDB->updateInfoPlatform($name,$description,(int)$platformid);
     
-
+    header("location: ../Presentation/about.php");
  }
  
