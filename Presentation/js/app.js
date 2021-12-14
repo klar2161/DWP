@@ -12,11 +12,11 @@ $(document).ready(function () {
       '<span class="likeTypeAction" original-title="Sad" data-reaction="7"><i class="sadIcon likeType"></i></span>' +
       '<span class="likeTypeAction last" original-title="Angry" data-reaction="8"><i class="angryIcon likeType"></i></span>';
 
-      $(this).tooltipster({
-        contentAsHTML: true,
-        interactive: true,
-        content: $(reactionsCode),
-      });
+    $(this).tooltipster({
+      contentAsHTML: true,
+      interactive: true,
+      content: $(reactionsCode),
+    });
   });
 
   /*Reaction*/
@@ -52,9 +52,9 @@ $(document).ready(function () {
           $("#" + x).hide();
         }
       },
-      error: function(){
-        alert("Ooops! An error occured, please try again later!")
-      }
+      error: function () {
+        alert("Ooops! An error occured, please try again later!");
+      },
     });
 
     return false;
@@ -82,9 +82,9 @@ $(document).ready(function () {
             .removeClass("unLike");
         }
       },
-      error: function(){
-        alert("Ooops! An error occured, please try again later!")
-      }
+      error: function () {
+        alert("Ooops! An error occured, please try again later!");
+      },
     });
     return false;
   });

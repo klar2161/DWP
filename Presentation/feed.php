@@ -26,15 +26,16 @@ include_once '../Application/banned.php';
 </div> 
 
 <?php 
+    /*
 	  $query = 
     "SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img
     FROM posts
     JOIN users ON posts.userID=users.userID
     ORDER BY  postID DESC";
     $result = mysqli_query($conn, $query) or die("its ded");
-    
-    /*$postDAO = new PostDAO(); //create object from class
-    $row = $postDAO->getAllPosts();*/
+    */
+    $postDAO = new PostDAO(); //create object from class
+    $result = $postDAO->getAllPosts();
 
     while($row = mysqli_fetch_assoc($result)){
         $postid=$row['postID'];

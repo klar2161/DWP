@@ -55,22 +55,18 @@ class PostDAO {
         $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
 
-        $sql = 
-        "SELECT posts.postID, users.usersuid, posts.post, posts.userID,posts.post_img
-        FROM posts
-        JOIN users ON posts.userID=users.userID
-        ORDER BY postID DESC";
-
+        $sql = "SELECT * FROM AllPosts";
+       
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql);
         mysqli_stmt_execute($stmt);
 
         $resultData = mysqli_stmt_get_result($stmt);
-        $row = mysqli_fetch_assoc($resultData);
+        //$row = mysqli_fetch_assoc($resultData);
 
         mysqli_stmt_close($stmt);
 
-        return $row;
+        return $resultData;
 
     }
 
