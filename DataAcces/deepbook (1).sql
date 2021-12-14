@@ -26,6 +26,7 @@
             post_img varchar (255) NULL,
             userID int NOT NULL,
             is_pinned tinyint(1) DEFAULT 0,
+            like_count int(11) DEFAULT NULL,
             FOREIGN KEY (userID) REFERENCES users (userID)
         )ENGINE=InnoDB;
 
@@ -43,15 +44,25 @@
             name varchar(45)
         )ENGINE=InnoDB;
 
+        INSERT INTO `reactions` (`rid`, `name`) VALUES
+        (1, 'Like'),
+        (2, 'Love'),
+        (3, 'Haha'),
+        (4, 'Wow'),
+        (5, 'Cool'),
+        (6, 'Confused '),
+        (7, 'Sad'),
+        (8, 'Angry ');
+
         CREATE TABLE post_like(
             likeID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-            userID int NOT NULL,
-            created int (11)
-            FOREIGN KEY (userID) REFERENCES users (userID),
-            postID int NOT NULL,
-            FOREIGN KEY (postID) REFERENCES posts (postID),
-            rid int NOT NULL,
-            FOREIGN KEY (rid) REFERENCES reactions (rid)
+            userID_fk int NOT NULL,
+            created int (11),
+            FOREIGN KEY (userID_fk) REFERENCES users (userID),
+            postID_fk int NOT NULL,
+            FOREIGN KEY (postID_fk) REFERENCES posts (postID),
+            rid_fk int NOT NULL,
+            FOREIGN KEY (rid_fk) REFERENCES reactions (rid)
         )ENGINE=InnoDB;
 
 
