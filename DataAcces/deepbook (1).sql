@@ -38,6 +38,21 @@
             FOREIGN KEY (postID) REFERENCES posts (postID)
         )ENGINE=InnoDB;
 
+        CREATE TABLE reactions(
+            rid int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            name varchar(45)
+        )ENGINE=InnoDB;
+
+        CREATE TABLE post_like(
+            likeID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            userID int NOT NULL,
+            created int (11)
+            FOREIGN KEY (userID) REFERENCES users (userID),
+            postID int NOT NULL,
+            FOREIGN KEY (postID) REFERENCES posts (postID),
+            rid int NOT NULL,
+            FOREIGN KEY (rid) REFERENCES reactions (rid)
+        )ENGINE=InnoDB;
 
 
         INSERT INTO `users` (`userID`, `usersUid`, `usersEmail`, `usersPwd`, `profile_img`, `cover_img`, `user_level`) VALUES

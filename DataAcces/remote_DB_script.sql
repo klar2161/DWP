@@ -29,7 +29,7 @@ CREATE TABLE Platform (
             profile_img varchar (255) NULL,
             cover_img varchar (255) NULL,
             user_level int(11) DEFAULT 0
-        )ENGINE=InnoDB;
+        )ENGINE=InnoDBz;
 
         
         CREATE TABLE posts (
