@@ -65,12 +65,6 @@
             FOREIGN KEY (rid_fk) REFERENCES reactions (rid)
         )ENGINE=InnoDB;
 
-        CREATE VIEW Allposts
-        AS SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned
-        FROM posts, users
-        WHERE posts.userID=users.userID
-        ORDER BY is_pinned DESC, postID DESC;
-
 
         INSERT INTO `users` (`userID`, `usersUid`, `usersEmail`, `usersPwd`, `profile_img`, `cover_img`, `user_level`) VALUES
         (1, 'admin', 'admin@admin.hu', '$2y$09$blAYjRdGp4Y3JBDfWfokAuy32osJaTGXUHsso2H3RgxUx9.UrM7bG', NULL, NULL, 1),

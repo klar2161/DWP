@@ -55,7 +55,29 @@ class PostDAO {
         $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
 
-        $sql = "SELECT * FROM AllPosts";
+        $sql = "SELECT * FROM allposts";
+       
+        $stmt = mysqli_stmt_init($conn);
+        mysqli_stmt_prepare($stmt, $sql);
+        mysqli_stmt_execute($stmt);
+
+        $resultData = mysqli_stmt_get_result($stmt);
+        //$row = mysqli_fetch_assoc($resultData);
+
+        mysqli_stmt_close($stmt);
+
+        return $resultData;
+
+    }
+
+    function getAllComments(){
+        $dbFactory = new connectionFactory();
+        $conn = $dbFactory->createConnection();
+
+        $postid=$row['postID'];
+
+        $sql = "SELECT content FROM comments 
+        WHERE comments.postID = '$postid'";
        
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql);

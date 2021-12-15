@@ -27,15 +27,8 @@ include_once '../Application/banned.php';
 
 <?php 
 
-	  $query = 
-    "SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned
-    FROM posts
-    JOIN users ON posts.userID=users.userID
-    ORDER BY is_pinned DESC, postID DESC";
-    $result = mysqli_query($conn, $query) or die("its ded");
-
-    /*$postDAO = new PostDAO(); //create object from class
-    $result = $postDAO->getAllPosts();*/
+    $postDAO = new PostDAO();
+    $result = $postDAO->getAllPosts();
 
     while($row = mysqli_fetch_assoc($result)){
         $postid=$row['postID'];
