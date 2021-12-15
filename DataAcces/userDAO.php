@@ -99,7 +99,7 @@ class UserDAO {
         $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
 
-        $query = "UPDATE `Users` SET user_level='0' WHERE 
+        $query = "UPDATE `users` SET user_level='0' WHERE 
         `userID`=". $_GET['id'];
         mysqli_query($conn, $query);
     }
@@ -108,7 +108,7 @@ class UserDAO {
         $dbFactory = new connectionFactory();
         $conn = $dbFactory->createConnection();
 
-        $query = "UPDATE `Users` SET user_level='2' WHERE 
+        $query = "UPDATE `users` SET user_level='2' WHERE 
         `userID`=". $_GET['id'];
         mysqli_query($conn, $query);
     }
