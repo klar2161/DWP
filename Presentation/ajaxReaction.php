@@ -6,8 +6,7 @@ include_once 'testclass.php';
 $feed = new feed();
 $feedData=$feed->newsFeed();
 
-$sessions_uid=$_SESSION['userid'];
-$session_uid='1';
+$session_uid=$_SESSION['userid'];
 if($_POST['postID']  && $_POST['rid'] && $session_uid>0)
 {
 $postID=$_POST['postID'];

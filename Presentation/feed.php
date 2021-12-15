@@ -58,7 +58,7 @@ include_once '../Application/banned.php';
         "<br>";
 
 
-        //include 'reactions.php';      
+        include 'test.php';      
 ?>
     <form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>

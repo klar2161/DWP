@@ -1,7 +1,6 @@
 <?php 
 include_once '../DataAcces/connectDB.php';
 include_once 'testclass.php';
-include_once '../Application/session.php';
 
 
 $feed = new feed();
@@ -64,7 +63,6 @@ foreach($feedData as $data)
     <img src="<?php echo $data["profile_img"]; ?>" class="messageImg"/>
 
     </div>
-    <?php echo $data["post"]; ?>
     <div class="messageFooter">
     <?php echo $like; ?>
 
