@@ -57,8 +57,9 @@ include_once '../Application/banned.php';
         echo"<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
         "<br>";
 
-
+        
         include 'test.php';      
+        
 ?>
     <form action="../Application/comment.php" method="post" class="postbox">
         <textarea type="text" name="content" id="content" rows="2" cols="64" style="" placeholder="Comment"></textarea>
