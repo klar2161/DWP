@@ -48,7 +48,7 @@
         )ENGINE=InnoDB;
 
         CREATE VIEW Allposts
-        AS SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned
+        AS SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned, (SELECT COUNT(*) AS likecount FROM post_like WHERE postID=posts.postID)AS post_like_count
         FROM posts, users
         WHERE posts.userID=users.userID
         ORDER BY is_pinned DESC, postID DESC;

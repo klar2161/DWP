@@ -6,6 +6,7 @@ include_once '../DataAcces/postDAO.php';
 include_once '../Application/functions.inc.php';
 include_once '../Application/postPinnSwitcher.php';
 include_once '../Application/banned.php';
+include_once '../DataAcces/reactionDAO.php';
 
 
 
@@ -22,9 +23,14 @@ include_once '../Application/banned.php';
 </div> 
 
 <?php 
+    $query = "SELECT posts.postID, users.usersuid, posts.post, posts.userID, posts.post_img, posts.is_pinned, (SELECT COUNT(*) AS likecount FROM post_like WHERE postID=posts.postID)AS post_like_count
+    FROM posts
+    JOIN users ON posts.userID=users.userID
+    ORDER BY is_pinned DESC, postID DESC";
+    $result = mysqli_query($conn, $query) or die("its ded");
 
-    $postDAO = new PostDAO();
-    $result = $postDAO->getAllPosts();
+    /*$postDAO = new PostDAO();
+    $result = $postDAO->getAllPosts();*/
 
     while($row = mysqli_fetch_assoc($result)){
         $postid=$row['postID'];
@@ -52,9 +58,18 @@ include_once '../Application/banned.php';
         "<br>";
         echo"<a href='../Presentation/post.php?id=".$row['postID']."'>Checkout this post</a>".
         "<br>";
+        $reactionDAO = new ReactionDAO();
+        $didUserLike = $reactionDAO->didUserLikePost($row['postID'],$_SESSION['userid']);
 
-        
-        include 'reaction.php';      
+
+        echo "<span>(".$row['post_like_count'].") users liked</span>";
+        echo "<br>";
+        if ($didUserLike) {
+          echo "<a href='../Application/post_reaction.inc.php?postID=".$row['postID']."&action=cancel_like'>Remove Like</a>";
+        }else{
+          echo "<a href='../Application/post_reaction.inc.php?postID=".$row['postID']."&action=like'>Like</a>";
+        }
+    
         
 ?>
     <form action="../Application/comment.php" method="post" class="postbox">
