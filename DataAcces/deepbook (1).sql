@@ -39,30 +39,12 @@
             FOREIGN KEY (postID) REFERENCES posts (postID)
         )ENGINE=InnoDB;
 
-        CREATE TABLE reactions(
-            rid int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-            name varchar(45)
-        )ENGINE=InnoDB;
-
-        INSERT INTO `reactions` (`rid`, `name`) VALUES
-        (1, 'Like'),
-        (2, 'Love'),
-        (3, 'Haha'),
-        (4, 'Wow'),
-        (5, 'Cool'),
-        (6, 'Confused '),
-        (7, 'Sad'),
-        (8, 'Angry ');
-
         CREATE TABLE post_like(
-            likeID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-            userID_fk int NOT NULL,
-            created int (11),
-            FOREIGN KEY (userID_fk) REFERENCES users (userID),
-            postID_fk int NOT NULL,
-            FOREIGN KEY (postID_fk) REFERENCES posts (postID),
-            rid_fk int NOT NULL,
-            FOREIGN KEY (rid_fk) REFERENCES reactions (rid)
+            ID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            userID int NOT NULL,
+            FOREIGN KEY (userID) REFERENCES users (userID),
+            postID int NOT NULL,
+            FOREIGN KEY (postID) REFERENCES posts (postID)
         )ENGINE=InnoDB;
 
         CREATE VIEW Allposts
