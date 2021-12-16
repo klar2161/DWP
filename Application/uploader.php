@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 class Uploader {
 
     public function uploadImage($file, $resizeSize){

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once '../Presentation/header.php';
 include_once '../DataAcces/connectDB.php';
 include_once 'uploader.php';

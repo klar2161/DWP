@@ -1,4 +1,5 @@
 <?php
+ob_start();
     require_once '../DataAcces/connectDB.php';
    include_once '../DataAcces/userDAO.php';
    include_once 'functions.inc.php';

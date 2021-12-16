@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once '../DataAcces/userDAO.php';
 // SIGNUP Functions --------------------------------
 function emptyInputSignup($email, $username, $pwd, $pwdRepeat) {

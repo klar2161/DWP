@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 include_once("../DataAcces/connectDB.php");
 include_once("../DataAcces/postDAO.php");
 include_once("uploader.php");

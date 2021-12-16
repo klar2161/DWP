@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once 'usersA.php';
 include_once '../DataAcces/userDAO.php';
 header("Refresh:0; url=../Presentation/adminpanel.php");

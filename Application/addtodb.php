@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once ("../DataAcces/connectDB.php");
 require_once ("functions.inc.php");
 header("Refresh:0; url=../Presentation/adminpanel.php");

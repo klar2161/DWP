@@ -1,5 +1,6 @@
 
 <?php 
+ob_start();
 define('USER_LEVEL_BANNED' , '2');
 
 function isBanned() {

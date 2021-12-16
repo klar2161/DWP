@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
     // *** Include the class
     include_once("../DataAcces/connectDB.php");

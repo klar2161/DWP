@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if (isset($_POST["sub"])) {
     if(!empty($_POST['g-recaptcha-response']))
     {

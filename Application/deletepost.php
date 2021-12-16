@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once '../Presentation/feed.php';
 include_once '../DataAcces/postDAO.php';
 header("Refresh:0; url=../Presentation/feed.php");
