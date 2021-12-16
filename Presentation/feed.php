@@ -54,7 +54,7 @@ include_once '../Application/banned.php';
         "<br>";
 
         
-        include 'test.php';      
+        include 'reaction.php';      
         
 ?>
     <form action="../Application/comment.php" method="post" class="postbox">
