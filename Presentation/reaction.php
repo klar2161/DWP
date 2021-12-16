@@ -1,6 +1,6 @@
 <?php 
 include_once '../DataAcces/connectDB.php';
-include_once 'testclass.php';
+include_once 'Reactionclass.php';
 
 
 $feed = new feed();
@@ -57,13 +57,13 @@ foreach($feedData as $data)
 
 
     ?>
-    <div class="messageBody" id="msg<?php echo $data["postID"];
+    <!-- <div class="messageBody" id="msg<?php echo $data["postID"];
     ?>">
 
     <img src="<?php echo $data["profile_img"]; ?>" class="messageImg"/>
 
     </div>
-    <div class="messageFooter">
+    <div class="messageFooter"> -->
     <?php echo $like; ?>
 
 

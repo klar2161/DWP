@@ -2,10 +2,10 @@
 include_once '../DataAcces/connectDB.php';
 include_once '../DataAcces/connectionFactory.php';
 include_once '../Application/session.php';
-include_once 'testclass.php';
+include_once 'Reactionclass.php';
+
 $feed = new feed();
 $feedData=$feed->newsFeed();
-
 $session_uid=$_SESSION['userid'];
 if($_POST['postID']  && $_POST['rid'] && $session_uid>0)
 {

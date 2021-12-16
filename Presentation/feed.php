@@ -18,11 +18,7 @@ include_once '../Application/banned.php';
             <br>
             <button type="submit" name="submit" class="postbox">Post</button>
     </form>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.livequery.js"></script>
-<script src="js/jquery.tooltipsterReaction.js"></script>
-<script src="js/jquery.tipsy.js"></script>
-<script src="js/app.js"></script>
+
 </div> 
 
 <?php 
@@ -78,6 +74,8 @@ include_once '../Application/banned.php';
           }
           
   }
+  
+  
 ?>
    
 
