@@ -65,9 +65,9 @@ include_once '../DataAcces/reactionDAO.php';
         echo "<span>(".$row['post_like_count'].") users liked</span>";
         echo "<br>";
         if ($didUserLike) {
-          echo "<a href='../Application/post_reaction.inc.php?postID=".$row['postID']."&action=cancel_like'>Remove Like</a>";
+          echo "<a href='../Application/post_reaction.inc.php?postID=".$row['postID']."&action=cancel_like' class='cancel_like'>Remove Like</a>";
         }else{
-          echo "<a href='../Application/post_reaction.inc.php?postID=".$row['postID']."&action=like'>Like</a>";
+          echo "<a href='../Application/post_reaction.inc.php?postID=".$row['postID']."&action=like' class='like'>Like</a>";
         }
     
         

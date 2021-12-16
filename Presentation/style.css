@@ -3,6 +3,26 @@
   margin: 0;
   box-sizing: border-box;
 }
+.like{
+  background-color: blue;
+  color: white;
+
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  opacity: 0.9;
+}
+.cancel_like{
+  background-color: blue;
+  color: white;
+ 
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  opacity: 0.9;
+}
 
 body {
   background-color: rgb(245, 245, 245);
